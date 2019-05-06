@@ -2,7 +2,7 @@
 let x=document.getElementById('ProfileDisplay');
 let y=document.getElementById('Addprofile');
 let z=document.getElementById('UpdateProfile');
-let w   =document.getElementById('Giftlist');
+let giftlist   =document.getElementById('Giftlist');
 
 
 
@@ -20,7 +20,7 @@ function addContact() {
             var phone_num=document.getElementById("phone_num").value;
                 var business=document.getElementById("business").value;
         var contact = {
-         _id: new Date().toISOString(),name: full_name,phone: phone_num,business_contact: business  
+         _id: new Date().toISOString(),Giftname: gift,priceofitem: price,GiftOccasion: occasion,location:location,purchasestatus:status  
         };  
            db.put(contact, function callback(err, result) {
                if (!err) {console.log('Successfully saved a contact!');
@@ -58,14 +58,14 @@ function showTodos() {
 // }
 
 function ProfileDisplay(){
-    w.style.display="block";
+    giftlist.style.display="block";
     x.style.display="none";
     y.style.display="none";
     z.style.display="none";
 }
 
 function Addprofile(){
-    w.style.display="none";
+   giftlist.style.display="none";
     x.style.display="block";
     z.style.display="none";
     y.style.display="none";
@@ -76,7 +76,7 @@ function Addprofile(){
 }
 
 function UpdateProfile(){
-    w.style.display="none";
+    giftlist.style.display="none";
     y.style.display="block";
     z.style.display="none";
     x.style.display="none";
@@ -85,8 +85,8 @@ function UpdateProfile(){
 }
 
 function Giftlist(){
-z.style.display="block";
-w.style.display="none";
+z.style.display="none";
+giftlist.style.display="block";
 y.style.display="none";
 x.style.display="none";
 

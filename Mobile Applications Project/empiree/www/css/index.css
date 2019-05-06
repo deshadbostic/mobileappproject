@@ -22,6 +22,6 @@ body{
 }
 
 
-#ProfileDisplay,#Addprofile,#UpdateProfile{
+#Addprofile,#UpdateProfile,#Giftlist{
     display:none;   
 }  
