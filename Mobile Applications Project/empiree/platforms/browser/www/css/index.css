@@ -1,0 +1,27 @@
+#container{
+    height:100%;
+    width:100%;
+    position:fixed;
+    background-color: rgb(175, 108, 107);
+    margin:0px;
+ 
+    padding: 0%;
+}
+
+#responsive_container{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: repeat(2, 100px);
+background-color: rgb(175, 108, 104);
+}
+
+
+body{
+    margin:0px;
+}
+
+
+#ProfileDisplay,#Addprofile,#UpdateProfile{
+    display:none;   
+}  
