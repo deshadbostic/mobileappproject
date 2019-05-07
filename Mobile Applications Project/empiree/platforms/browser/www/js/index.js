@@ -15,10 +15,12 @@ function onDeviceReady() {
     db = new PouchDB("contact_db");
     alert ("DB created!!");
 }
-function addContact() {
-        var full_name=document.getElementById("full_name").value;
-            var phone_num=document.getElementById("phone_num").value;
-                var business=document.getElementById("business").value;
+function addgift() {
+        var gift=document.getElementById("gifttxt").value;
+            var price=document.getElementById("priceamt").value;
+                var occasion=document.getElementById("occasiontxt").value;
+                var location=document.getElementById("locationtxt").value;
+                var status=document.getElementById("statustype").value;
         var contact = {
          _id: new Date().toISOString(),Giftname: gift,priceofitem: price,GiftOccasion: occasion,location:location,purchasestatus:status  
         };  
