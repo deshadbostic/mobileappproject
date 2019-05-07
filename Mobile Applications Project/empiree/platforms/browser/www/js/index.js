@@ -20,7 +20,7 @@ function addgift() {
             var price=document.getElementById("priceamt").value;
                 var occasion=document.getElementById("occasiontxt").value;
                 var location=document.getElementById("locationtxt").value;
-                var status=document.getElementById("statustype").value;
+                var status=false;
         var contact = {
          _id: new Date().toISOString(),Giftname: gift,priceofitem: price,GiftOccasion: occasion,location:location,purchasestatus:status  
         };  
@@ -31,10 +31,10 @@ function addgift() {
                 }
            }   
            );
-showTodos();
+showgiftlist();
 }
 
-function showTodos() {
+function showgiftlist() {
     db.allDocs({include_docs: true}, 
         function(err, docs) {   
                 if (err) {
@@ -43,9 +43,9 @@ function showTodos() {
                     var num_records=docs.total_rows;
                     var display_records="";
                     for(var i = 0; i < num_records; i++){
-                    display_records=display_records + docs.rows[i].doc.name + "<br/>" + docs.rows[i].doc.phone + "<br/>" + docs.rows[i].doc.business_contact + "<hr/>"; 
+                    display_records=display_records + docs.rows[i].doc.Giftname + "<br/> $" + docs.rows[i].doc.priceofitem + "<br/>" + docs.rows[i].doc.GiftOccasion + docs.rows[i].doc.location + "<br/>" + docs.rows[i].doc.purchasestatus +"<hr/>"; 
                     } 
-                    document.getElementById("contact_list").innerHTML = display_records;
+                    document.getElementById("Giftlist").innerHTML = display_records;
                 }
         }
     );
@@ -56,7 +56,7 @@ function showTodos() {
 // "cars","trucks",
 // }
 // boysreferenc{
-//     "image/car.peg"
+//    "image/car.peg"
 // }
 
 function ProfileDisplay(){
