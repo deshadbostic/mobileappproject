@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Blank App</title>
+        <link rel="stylesheet"type="text/css" href="css/index.css">
+        <script type="text/javascript" src="js/pouchdb-7.0.0.min.js"></script>
+    </head>
+    <body>
+        <div id="Discount">
+           Enter Price: 
+           <br/>
+           $<input type="text" id="itemPrice" Placeholder="Enter Original Price">
+            <br>
+            
+            Enter Discount:
+            <br/>
+            <input type="text" id="discountPercentage" Placeholder="Enter Discount">%
+            <br/>
+            <button id="calculate">Calculate</button>
+            <br/>
+            <span id="result"></span>
+        </div>
+        <script>
+            document.getElementById("calculate").onclick = function(){
+                var price = document.getElementById("itemPrice").value;
+                var fDiscount = document.getElementById("discountPercentage").value;
+                discount = fDiscount / 100;
+
+
+                var final_discount =0;
+                final_discount = (price*discount);
+                final_price = price - final_discount;
+                 
+                  document.getElementById("result").innerHTML  =  final_price ;
+            }
+        </script>
+    </body>
+
+</html>
