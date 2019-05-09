@@ -2,8 +2,8 @@
 let x=document.getElementById('ProfileDisplay');
 let y=document.getElementById('Addprofile');
 let z=document.getElementById('UpdateProfile');
-let giftlist   =document.getElementById('Giftlist');
-
+let giftlist=document.getElementById('Giftlist');
+let Categories=document.getElementById('Categories')
 
 
 var db = new PouchDB('empiree_db');
@@ -33,6 +33,35 @@ function addgift() {
            );
 showgiftlist();
 }
+function Register(){
+    var username=document.getElementById("username").value;
+    var password=document.getElementById("password").value;
+    var credentials={
+        _id:new Date().toISOString(),Username:username,Password:password };
+    db.put(credentials,function callback(err, result) {
+        if (!err){
+            console.log('Succefully logged in!');
+    alert('You have succesfully logged in');
+ }
+    }
+    );
+}
+function login(){
+    console.log("it ran");
+     db.get(,function callback(err,result) {         
+      if(!err){
+        var num_records=docs.total_rows;
+        var display_records="";
+        for(var i = 0; i < num_records; i++){
+        display_records=display_records + docs.rows[i].doc.Username + "<br/> $" + docs.rows[i].doc.Password+"<hr/>"; 
+        } 
+        document.getElementById("ProfileDisplay").innerHTML = display_records;
+      }else{
+          console.log(err);
+      }
+
+     })   
+}
 
 function showgiftlist() {
     db.allDocs({include_docs: true}, 
@@ -60,17 +89,17 @@ function showgiftlist() {
 // }
 
 function ProfileDisplay(){
-    giftlist.style.display="block";
-    x.style.display="none";
+    giftlist.style.display="none";
+    x.style.display="block";
     y.style.display="none";
     z.style.display="none";
 }
 
 function Addprofile(){
    giftlist.style.display="none";
-    x.style.display="block";
+    x.style.display="none";
     z.style.display="none";
-    y.style.display="none";
+    y.style.display="block";
 
 
 
@@ -91,5 +120,15 @@ z.style.display="none";
 giftlist.style.display="block";
 y.style.display="none";
 x.style.display="none";
+
+}
+
+function Categories(){
+Categories.style.display="block";
+x.style.display="none";
+y.style.display="none";
+w.style.display="none";
+z.style.display="none";
+gift.style.display="none"
 
 }
