@@ -19,12 +19,12 @@
             <button id="update" onclick="UpdateProfile()">Update Profile </button>
             <button id="giftList" onclick="Giftlist()"> GiftList</button>
             <button id="discount" onclick="Discount()"> Discount</button>
-            <button id="Prearranged List" onclick="Categoriesa(), display()"> Prearranged List</button>
+            <button id="Prearranged List" onclick="Categoriesa(),insertcategories()"> Prearranged List</button>
 
         </div>
         <div id="Categoriesa">
-            p
-            <div id="boy"></div>
+            <button onclick="insertcategories('boys');"> BOYS</button>
+            <div id="boys"></div>
             <div id="girls"></div>
             <div id="teens"></div>
             <div id="women"></div>
@@ -36,11 +36,13 @@
             <div id="eletronics"></div>
             <div id=" baby "></div>
             
-            <script src="js/Array.js">
-                
-            </script>
             
         </div>
+        <div id="logindiv"> Please log in 
+                Username: <input id="usernametxt">  
+                Password: <input type="password" id="passwordtxt">
+                <button onclick="login();"> log in</button>
+                </div>
         <div id="ProfileDisplay">
                 Welcome
                 <h1> Empiree</h1>

@@ -54,7 +54,7 @@ function login(){
         username=result.Username;
         actualpassword=result.Password;
         document.getElementById("usernametxt");
-        document.getElementById("Passwordtxt");
+    let actualpassword= document.getElementById("Passwordtxt");
         if(password==actualpassword){
           console.log("you have entered the correct password")
           Giftlist(); 
@@ -87,7 +87,9 @@ function showgiftlist() {
     );
 }
 
-
+function insertcategories(category){
+    document.getElementById(category).innerHTML=Boys[1];
+}
 // boys{
 // "cars","trucks",
 // }
