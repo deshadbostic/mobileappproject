@@ -15,12 +15,13 @@
            
 
         <div id="navbar">
+            <center>
             <button class="butte" id="home" onclick="ProfileDisplay()">Home</button>
             <button class="butte"id="update" onclick="UpdateProfile()">Update Profile </button>
             <button class="butte"id="giftList" onclick="Giftlist()"> GiftList</button>
             <button class="butte"id="discount" onclick="Discount()"> Discount</button>
-            <button class="butte"id="Prearranged List" onclick="Categoriesa(),insertcategories()"> Prearranged List</button>
-
+            <button class="butte"id="Prearranged List" onclick="Categoriesa(),insertcategories()">Item List</button>
+        </center>
         </div>
         <div id="Categoriesa">
             <center>
@@ -76,44 +77,55 @@
               
        
     </div>
-            <div id="Addprofile">
-                username:<input id="username"> <br />
-                password:<input type="password" id="password"> <br />
-                <button onclick="Register();"> create a login </button>
+            <div  id="Addprofile">
+                <center>
+                    <h1>Empire´</h1>
+                    <h3>Signup</h3>
+                username:<input class="tat"id="username"> <br />
+                password:<input class="tat"type="password" id="password"> <br />
+                <br>
+                <br>
+                <button class="but"onclick="Register();"> create a login </button>
+            </center>
             </div>
             <div id="UpdateProfile">
-               
-               Please enter your password to confirm <input  type="password" id="confirmpass">
-               <button  id="buttonconfirm" onclick="updatelogin()">confirm</button>
-               <div id="change"> 
-               new username  <input id="newusername">
-               new password  <input id="newpassword">
-               <button onclick="updateloginprttwo()">change password  </button></div>
-               </div>
-            <div id="AddGift">
-                choose a gift <input id="gifttxt"> <br />
-                gift occasion <input id="occasiontxt"> <br />
-                price:<input id="priceamt"> <br />
-                where are you going to get the item from <input id="locationtxt"> <br />
-                <button onclick="addgift();"> enter gift</button>
+                u can update if you really want
             </div>
+            <div id="AddGift">
+                <center>
+                choose a gift <br><input id="gifttxt"> <br />
+                gift occasion <br><input id="occasiontxt"> <br />
+                price:<br/>$<input id="priceamt"> <br />
+                where are you going to get the item from <br><input id="locationtxt"> <br />
+                <br/><br/>
+                <button class="but" onclick="addgift();"> enter gift</button>
+            </center>
+            </div>
+        <center>
             <div id="Giftlist">
                 
+
+               
+                
             </div>
+        </center>
+        
             <div id="Discount">
                 <center>
                 Enter Price:
                 <br />
-                $<input type="text" class="tat"d="itemPrice" Placeholder="Enter Original Price">
-                <br>
+                $<input type="text" class="tat"id="itemPrice" Placeholder="Enter Original Price">
+                <br><br />
 
                 Enter Discount:
                 <br />
                 <input type="text" class="tat"id="discountPercentage" Placeholder="Enter Discount">%
-                <br />
+                <br /><br />
                 <button class="but" id="calculate" onclick="calculate();"> Calculate</button>
                 <br />
-                <span id="result"></span>
+                <br/>
+                <br/>
+                Discounter Price:$<span id="result"></span>
             </center>
             </div>
             <script src="js/index.js"> </script>
