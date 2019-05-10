@@ -145,7 +145,7 @@ x.style.display="none";
 y.style.display="none";
 Discountpg.style.display="none";
 z.style.display="none";
-gift.style.display="none"
+giftlist.style.display="none"
 
 }
 
