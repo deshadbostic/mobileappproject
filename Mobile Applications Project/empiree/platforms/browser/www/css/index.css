@@ -5,9 +5,16 @@ body, html {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
+    background-color:rgb(175, 108, 107);
   }
   #logindiv{
       color:white;
+  }
+  #Categoriesa{
+      color:white;
+  }
+  #ProfileDisplay{
+    color:white;
   }
   .tat{
       border-top: none;
@@ -51,6 +58,12 @@ body{
 }
 
 
-#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift,#navbar{
+#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift{
     display:none;   
 }  
+.butto{
+    color:#8FC7D7;
+}
+.butte{
+    color:white;
+}

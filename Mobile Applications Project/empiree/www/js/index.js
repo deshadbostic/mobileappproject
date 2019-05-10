@@ -105,13 +105,20 @@ function login(){
 }
 function updatelogin(){
 confirmation= document.getElementById('confirmpass');
+db.get('001',function callback(err,res) { 
+ 
+    let actualpassword=res.Password;
+    let buttonconfirm=document.getElementById('buttonconfirm');
+  
 if(confirmation.value==actualpassword){
   confirmation.style.display="none";
+   buttonconfirm.style.display="none"
   change.style.display="block"; 
   
 }else{
     alert('Incorrect password');
 }
+})
 }
 function showgiftlist() {
     db.allDocs({include_docs: true}, 
