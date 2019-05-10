@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Blank App</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/pouchdb-7.0.0.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="responsive_container">
+           
+
+        <div id="navbar">
+            <button id="home" onclick="ProfileDisplay()">Home</button>
+            <button id="update" onclick="UpdateProfile()">Update Profile </button>
+            <button id="giftList" onclick="Giftlist()"> GiftList</button>
+            <button id="discount" onclick="Discount()"> Discount</button>
+            <button id="Prearranged List" onclick="Categoriesa(), display()"> Prearranged List</button>
+
+        </div>
+        <div id="Categoriesa">
+            p
+            <div id="boy"></div>
+            <div id="girls"></div>
+            <div id="teens"></div>
+            <div id="women"></div>
+            <div id="men"></div>
+            <div id="beauty "></div>
+            <div id="pet "></div>
+            <div id="clothing "></div>
+            <div id="toys"></div>
+            <div id="eletronics"></div>
+            <div id=" baby "></div>
+            
+            <script src="js/Array.js">
+                
+            </script>
+            
+        </div>
+        <div id="ProfileDisplay">
+                Welcome
+                <h1> Empiree</h1>
+                <button onclick="Giftlist();"> thanks for the clutch welcome</button>
+              
+       <p> username</p>
+    </div>
+            <div id="Addprofile">
+                username:<input id="username"> <br />
+                password:<input id="password"> <br />
+                <button onclick="Register();"> create a login </button>
+            </div>
+            <div id="UpdateProfile">
+                u can update if you really want
+            </div>
+            <div id="Giftlist">
+                choose a gift <input id="gifttxt"> <br />
+                gift occasion <input id="occasiontxt"> <br />
+                price:<input id="priceamt"> <br />
+                where are you going to get the item from <input id="locationtxt"> <br />
+                <button onclick="addgift();"> enter gift</button>
+            </div>
+            <div id="Discount">
+                Enter Price:
+                <br />
+                $<input type="text" id="itemPrice" Placeholder="Enter Original Price">
+                <br>
+
+                Enter Discount:
+                <br />
+                <input type="text" id="discountPercentage" Placeholder="Enter Discount">%
+                <br />
+                <button id="calculate" onclick="calculate();"> Calculate</button>
+                <br />
+                <span id="result"></span>
+            </div>
+            <script src="js/index.js"> </script>
+            <!-- <script type="text/javascript" src="cordova.js"></script> -->
+        </div>
+    </div>
+
+</body>
+
+</html>
