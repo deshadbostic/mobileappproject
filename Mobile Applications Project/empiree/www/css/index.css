@@ -58,12 +58,36 @@ body{
 }
 
 
-#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift{
+#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift,#navbar{
     display:none;   
 }  
 .butto{
-    color:#8FC7D7;
+    color: rgb(175, 108, 107);
+    background-color:white;
+    border-radius: 35px;
 }
 .butte{
+    color:#82a5ad;
+    background-color:white;
+    border:none;
+    margin:none;
+    Padding:7px;
+}
+#Addprofile{
+    color:white;
+}
+
+::placeholder{
+    color:#EEEEEe;
+}
+#Discount{
+    color:white;
+}
+#Giftlist{
+    color:white;
+
+    
+}
+#AddGift{
     color:white;
 }
