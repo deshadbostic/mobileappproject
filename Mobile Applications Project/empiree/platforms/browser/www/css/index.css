@@ -22,6 +22,6 @@ body{
 }
 
 
-#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa{
+#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay{
     display:none;   
 }  

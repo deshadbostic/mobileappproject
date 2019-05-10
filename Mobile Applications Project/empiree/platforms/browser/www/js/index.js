@@ -3,9 +3,10 @@ let x=document.getElementById('ProfileDisplay');
 let y=document.getElementById('Addprofile');
 let z=document.getElementById('UpdateProfile');
 let giftlist=document.getElementById('Giftlist');
+let addGift=document.getElementById("AddGift")
 let Categories=document.getElementById('Categoriesa')
 let Discountpg=document.getElementById("Discount");
-
+let logindiv=document.getElementById("logindiv");
 var db = new PouchDB('empiree_db');
 console.log("the device is not ready")
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -46,22 +47,30 @@ function Register(){
     }
     );
 }
+
 function login(){
     console.log("it ran");
      db.get('2019-05-08T23:31:55.388Z',function callback(err,result) {         
       if(!err){
       console.log(result);
-        username=result.Username;
-        actualpassword=result.Password;
-        document.getElementById("usernametxt");
-    let actualpassword= document.getElementById("Passwordtxt");
+       let username=result.Username;
+       let actualpassword=result.Password;
+      let actnam=  document.getElementById("usernametxt").value;
+    let password= document.getElementById("passwordtxt").value;
+    console.log(actnam,actualpassword)
+    if(username==actnam){
+      
+    
         if(password==actualpassword){
-          console.log("you have entered the correct password")
+          console.log("you have entered the correct password");
           Giftlist(); 
 
         }else{
             alert("you have entered the wrong password")
         }
+    }else{
+        alert("This user does not exist")
+    }
         } 
       else{
           console.log(err);
@@ -87,9 +96,224 @@ function showgiftlist() {
     );
 }
 
-function insertcategories(category){
-    document.getElementById(category).innerHTML=Boys[1];
+function insertcategories(categories){
+
+  if(categories == 'boys'){
+   var i=0;
+    while(i< Boys.length){
+        document.getElementById("boys").style.display = "block";
+        document.getElementById("girls").style.display = "none";
+        document.getElementById("teens").style.display = "none";
+        document.getElementById("women").style.display = "none";
+        document.getElementById("men").style.display = "none";
+        document.getElementById("beauty").style.display = "none";
+        document.getElementById("pet").style.display = "none";
+        document.getElementById("clothing ").style.display = "none";
+        document.getElementById("toys").style.display = "none";
+        document.getElementById("eletronics").style.display = "none";
+        document.getElementById("baby ").style.display = "none";
+        
+        
+        document.getElementById("boys").innerHTML += "<img src=" + Boysref[i] +" height='200px' width='200px'>"+Boys[i] +"<br/>" ;
+        
+        i++
+    }
+   }
+
+   if(categories == 'girls'){
+    var i=0;
+     while(i< Girls.length){
+        document.getElementById("boys").style.display = "none";
+        document.getElementById("girls").style.display = "block";
+        document.getElementById("teens").style.display = "none";
+        document.getElementById("women").style.display = "none";
+        document.getElementById("men").style.display = "none";
+        document.getElementById("beauty").style.display = "none";
+        document.getElementById("pet").style.display = "none";
+        document.getElementById("clothing ").style.display = "none";
+        document.getElementById("toys").style.display = "none";
+        document.getElementById("eletronics").style.display = "none";
+        document.getElementById("baby ").style.display = "none";
+         document.getElementById("girls").innerHTML += "<img src=" + Girlsref[i] +" height='200px' width='200px'>"+Girls[i] +"<br/>" ;
+         
+         
+         i++
+     }
+    }
+    if(categories == 'teens'){
+        var i=0;
+         while(i< Teens.length){
+             document.getElementById("teens").innerHTML += "<img src=" + Teensref[i] +" height='200px' width='200px'>"+Teens[i] +"<br/>" ;
+             document.getElementById("boys").style.display = "none";
+             document.getElementById("girls").style.display = "none";
+             document.getElementById("teens").style.display = "block";
+             document.getElementById("women").style.display = "none";
+             document.getElementById("men").style.display = "none";
+             document.getElementById("beauty").style.display = "none";
+             document.getElementById("pet").style.display = "none";
+             document.getElementById("clothing ").style.display = "none";
+             document.getElementById("toys").style.display = "none";
+             document.getElementById("eletronics").style.display = "none";
+             document.getElementById("baby ").style.display = "none";
+             
+             i++
+         }
+        }
+        if(categories == 'women'){
+            var i=0;
+             while(i< Women.length){
+                 document.getElementById("women").innerHTML += "<img src=" + Womenref[i] +" height='200px' width='200px'>"+Women[i] +"<br/>" ;
+                 document.getElementById("boys").style.display = "none";
+                 document.getElementById("girls").style.display = "none";
+                 document.getElementById("teens").style.display = "none";
+                 document.getElementById("women").style.display = "block";
+                 document.getElementById("men").style.display = "none";
+                 document.getElementById("beauty").style.display = "none";
+                 document.getElementById("pet").style.display = "none";
+                 document.getElementById("clothing ").style.display = "none";
+                 document.getElementById("toys").style.display = "none";
+                 document.getElementById("eletronics").style.display = "none";
+                 document.getElementById("baby ").style.display = "none";
+                 i++
+             }
+            }
+            if(categories == 'men'){
+                var i=0;
+                 while(i< Men.length){
+                     document.getElementById("men").innerHTML += "<img src=" + Menref[i] +" height='200px' width='200px'>"+Men[i] +"<br/>" ;
+                     document.getElementById("boys").style.display = "none";
+                     document.getElementById("girls").style.display = "none";
+                     document.getElementById("teens").style.display = "none";
+                     document.getElementById("women").style.display = "none";
+                     document.getElementById("men").style.display = "block";
+                     document.getElementById("beauty").style.display = "none";
+                     document.getElementById("pet").style.display = "none";
+                     document.getElementById("clothing ").style.display = "none";
+                     document.getElementById("toys").style.display = "none";
+                     document.getElementById("eletronics").style.display = "none";
+                     document.getElementById("baby ").style.display = "none";
+                     i++
+                 }
+                }
+                if(categories == 'beauty'){
+                    var i=0;
+                     while(i< Beauty.length){
+                         document.getElementById("beauty").innerHTML += "<img src=" + Beautyref[i] +" height='200px' width='200px'>"+Beauty[i] +"<br/>" ;
+                         document.getElementById("boys").style.display = "none";
+                         document.getElementById("girls").style.display = "none";
+                         document.getElementById("teens").style.display = "none";
+                         document.getElementById("women").style.display = "none";
+                         document.getElementById("men").style.display = "none";
+                         document.getElementById("beauty").style.display = "block";
+                         document.getElementById("pet").style.display = "none";
+                         document.getElementById("clothing ").style.display = "none";
+                         document.getElementById("toys").style.display = "none";
+                         document.getElementById("eletronics").style.display = "none";
+                         document.getElementById("baby ").style.display = "none";
+                         i++
+                     }
+                    }
+                
+                if(categories == 'pet'){
+                    var i=0;
+                     while(i< Pet.length){
+                         document.getElementById("pet").innerHTML += "<img src=" + Petref[i] +" height='200px' width='200px'>"+Pet[i] +"<br/>" ;
+                         document.getElementById("boys").style.display = "none";
+                         document.getElementById("girls").style.display = "none";
+                         document.getElementById("teens").style.display = "none";
+                         document.getElementById("women").style.display = "none";
+                         document.getElementById("men").style.display = "none";
+                         document.getElementById("beauty").style.display = "none";
+                         document.getElementById("pet").style.display = "block";
+                         document.getElementById("clothing ").style.display = "none";
+                         document.getElementById("toys").style.display = "none";
+                         document.getElementById("eletronics").style.display = "none";
+                         document.getElementById("baby ").style.display = "none";
+                         i++
+                     }
+                    }
+                    if(categories == 'clothing'){
+                        var i=0;
+                         while(i< Clothing.length){
+                             document.getElementById("clothing").innerHTML += "<img src=" + Clothingref[i] +" height='200px' width='200px'>"+ Clothing[i] +"<br/>" ;
+                             document.getElementById("boys").style.display = "none";
+                             document.getElementById("girls").style.display = "none";
+                             document.getElementById("teens").style.display = "none";
+                             document.getElementById("women").style.display = "none";
+                             document.getElementById("men").style.display = "none";
+                             document.getElementById("beauty").style.display = "none";
+                             document.getElementById("pet").style.display = "none";
+                             document.getElementById("clothing ").style.display = "block";
+                             document.getElementById("toys").style.display = "none";
+                             document.getElementById("eletronics").style.display = "none";
+                             document.getElementById("baby ").style.display = "none";
+                             i++
+                         }
+                        }
+                        if(categories == 'toys'){
+                            var i=0;
+                             while(i< Toys.length){
+                                 document.getElementById("toys").innerHTML += "<img src=" + Toysref[i] +" height='200px' width='200px'>"+ Toys[i] +"<br/>" ;
+                                 document.getElementById("boys").style.display = "none";
+                                 document.getElementById("girls").style.display = "none";
+                                 document.getElementById("teens").style.display = "none";
+                                 document.getElementById("women").style.display = "none";
+                                 document.getElementById("men").style.display = "none";
+                                 document.getElementById("beauty").style.display = "none";
+                                 document.getElementById("pet").style.display = "none";
+                                 document.getElementById("clothing ").style.display = "none";
+                                 document.getElementById("toys").style.display = "block";
+                                 document.getElementById("eletronics").style.display = "none";
+                                 document.getElementById("baby ").style.display = "none";
+                                 i++
+                             }
+                            }
+                            if(categories == 'electronics'){
+                                var i=0;
+                                 while(i< Eletronics.length){
+                                     document.getElementById("eletronics").innerHTML += "<img src=" + Eletronicsref[i] +" height='200px' width='200px'>"+ Eletronics[i] +"<br/>" ;
+                                     document.getElementById("boys").style.display = "none";
+                                     document.getElementById("girls").style.display = "none";
+                                     document.getElementById("teens").style.display = "none";
+                                     document.getElementById("women").style.display = "none";
+                                     document.getElementById("men").style.display = "none";
+                                     document.getElementById("beauty").style.display = "none";
+                                     document.getElementById("pet").style.display = "none";
+                                     document.getElementById("clothing ").style.display = "none";
+                                     document.getElementById("toys").style.display = "none";
+                                     document.getElementById("eletronics").style.display = "block";
+                                     document.getElementById("baby ").style.display = "none";
+                                     i++
+                                 }
+                                }
+                                if(categories == 'baby'){
+                                    var i=0;
+                                     while(i< Baby.length){
+                                         document.getElementById("baby").innerHTML += "<img src=" + Babyref[i] +" height='200px' width='200px'>"+ Baby[i] +"<br/>" ;
+                                         document.getElementById("boys").style.display = "none";
+                                         document.getElementById("girls").style.display = "none";
+                                         document.getElementById("teens").style.display = "none";
+                                         document.getElementById("women").style.display = "none";
+                                         document.getElementById("men").style.display = "none";
+                                         document.getElementById("beauty").style.display = "none";
+                                         document.getElementById("pet").style.display = "none";
+                                         document.getElementById("clothing ").style.display = "none";
+                                         document.getElementById("toys").style.display = "none";
+                                         document.getElementById("eletronics").style.display = "none";
+                                         document.getElementById("baby ").style.display = "block";
+                                         i++
+                                     }
+                                    }
+            
+        
+                        
+    
+
+   
 }
+    
+
+
 // boys{
 // "cars","trucks",
 // }
@@ -104,6 +328,7 @@ function ProfileDisplay(){
     z.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
+    logindiv.style.display="none";
 }
 
 function Addprofile(){
@@ -111,7 +336,7 @@ function Addprofile(){
     x.style.display="none";
     z.style.display="none";
     y.style.display="block";
-
+    logindiv.style.display="none";
     Discountpg.style.display="none";
 
 
@@ -124,6 +349,7 @@ function UpdateProfile(){
     x.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
+    logindiv.style.display="none";
 }
 
 function Giftlist(){
@@ -132,6 +358,7 @@ giftlist.style.display="block";
 y.style.display="none";
 x.style.display="none";
 Discountpg.style.display="none";
+logindiv.style.display="none";
 }
 
 function Discount(){
@@ -140,6 +367,7 @@ function Discount(){
     y.style.display="none";
     x.style.display="none";
     Discountpg.style.display="block";
+    logindiv.style.display="none";
     }
 function Categoriesa(){
 Categories.style.display="block";
@@ -148,6 +376,7 @@ y.style.display="none";
 Discountpg.style.display="none";
 z.style.display="none";
 giftlist.style.display="none"
+logindiv.style.display="none";
 
 }
 
@@ -178,7 +407,7 @@ giftlist.style.display="none"
 
 
 var Boys = [ "Skateboard","Bicycle","Razor Scooter","Drones","RC cars","Trainsets", "Tranformers","Max Steel","Lego","Polo Shirts",  "V-Neck","Crew-Neck","Leather Jackets","Denim Jackets","Hoodies","Baggies","Dress Pants","Dryfit", "Underwear"   ];
-var Boysref = ["Amges/skateboard.jpeg","Amges/bicycle.jpg","Amges/scooter.jpeg","Amges/drones.jpg,Amges/rccar.jpeg","Amges/trainset.jpg","Amges/transformers.jpeg","Amges/maxsteel.jpg", "Amges/lego.jpg","Amges/poloshirt.jpg","Amges/v-neck.jpeg","Amges/Crew-Neck.jpeg","Amges/leatherjacket.jpeg","Amges/denimjacket.jpg","Amges/hoodie.jpeg","Amges/short.jpg","Amges/jeans.jpeg,Amges/joggers.jpeg","Amges/baggies.jpeg","Amges/dresspants.jpeg","Amges/dryfitpants.jpg","Amges/underwear.jpg" ];
+var Boysref = ["Amges/skateboard.jpeg","Amges/bicycle.jpg","Amges/scooter.jpeg","Amges/drones.jpg","Amges/rccar.jpeg","Amges/trainset.jpg","Amges/transformers.jpeg","Amges/maxsteel.jpg", "Amges/lego.jpg","Amges/poloshirt.jpg","Amges/v-neck.jpeg","Amges/Crew-Neck.jpeg","Amges/leatherjacket.jpeg","Amges/denimjacket.jpg","Amges/hoodie.jpeg","Amges/short.jpg","Amges/jeans.jpeg,Amges/joggers.jpeg","Amges/baggies.jpeg","Amges/dresspants.jpeg","Amges/dryfitpants.jpg","Amges/underwear.jpg" ];
 var Girls = [  "Bicycle","Dollhouse", "Babydolls","Barbie","Stuffed Animals","Lipstick", "Eyeliner", "Foundation", "concealer", "Highlighter","Dress Shirts", "Polo Shirts", "t-Shirts", "V-Neck","Crew-Neck","Leather Jackets","Denim Jackets","Hoodies","Shorts","Jeans","Joggers",,"Blouse","Dress","Skirt"];
 var Girlsref = [ "Amges/bicycle.jpg","Amges/dollhouse.jpeg","Amges/babydoll.jpeg","Amges/barbie.jpg","Amges/stuffedanimal.jpg", "Amges/lipstick.jpg","Amges/eyeliner.jpg","Amges/concealer.jpg","Amges/highlighter.jpeg", "Amges/babyonesie.jpg","Amges/dressshirt.jpeg","Amges/poloshirt.jpg","Amges/v-neck.jpeg","Amges/Crew-Neck.jpeg","Amges/leatherjacket.jpeg","Amges/denimjacket.jpg","Amges/hoodie.jpeg","Amges/ties.jpeg", "Amges/short.jpg","Amges/jeans.jpeg","Amges/joggers.jpeg","Amges/blouse.jpg","Amges/dress.jpeg","Amges/skirts.jpg"];
 var Teens =[ "Xbox","PS4","Watches","Rings","Bracelets","Watches","Polo Shirts", "t-Shirts", "V-Neck","Crew-Neck","Leather Jackets","Denim Jackets","Hoodies","Shorts","Jeans","Joggers","Baggies","Dress Pants","Dryfit", "Underwear" ,"Blouse","Dress","Skirt"];
@@ -199,6 +428,21 @@ var Eletronics= ["Smartphone", "Drones", "Xbox","PS4","Cameras","Controllers","L
 var Eletronicsref= ["Amges/smartphone.jpg","Amges/drones.jpg","Amges/xbox.jpeg","Amges/ps4.jpg","Amges/camera.jpeg","Amges/controller.jpeg","Amges/laptop.jpg","Amges/keyboard.jpg","Amges/mouse.jpg","Amges/cpu.jpg","Amges/motherboar.jpg","Amges/powersupply.jpg","Amges/harddrive.jpg","Amges/solidstatedrive.jpg","Amges/monitor.jpg","Amges/ram.jpg","Amges/headphones.jpg","Amges/speaker.jpeg","Amges/accessories.jpg"];
 var Baby = ["Building Blocks", "Rattles", "Stacking Rings","Rubber Ducky","Stuffed Giraffe","Xylophone","Car Seats","Diaper","Bibs","wipes","Baby Onesie"];
 var Babyref = ["Amges/stackingrings.jpeg","Amges/buildingblocks.jpeg","Amges/accessories.jpg","Amges/babyonesie.jpg","Amges/bibs.jpeg","Amges/carseat.jpeg","Amges/diaper.jpeg","Amges/Rattles.jpeg","Amges/rubberducky.jpeg","stuffedGiraffe.jpeg","Amges/wipes.jpeg","Amges/xylophone.jpeg"];
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
