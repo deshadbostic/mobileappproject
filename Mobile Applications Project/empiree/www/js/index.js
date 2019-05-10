@@ -167,7 +167,8 @@ function insertcategories(categories){
         document.getElementById("toys").style.display = "none";
         document.getElementById("eletronics").style.display = "none";
         document.getElementById("baby").style.display = "none";
-         document.getElementById("girls").innerHTML += "<img src=" + Girlsref[i] +" height='200px' width='200px'>"+Girls[i] +"<br/>" ;
+
+         document.getElementById("girls").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Girls[i]+"`)'><img src=" + Girlsref[i] +" height='200px' width='200px'>"+Girls[i] +"</div>"+"<br/>" ;
          
          
          i++
@@ -176,7 +177,6 @@ function insertcategories(categories){
     if(categories == 'teens'){
         var i=0;
          while(i< Teens.length){
-             document.getElementById("teens").innerHTML += "<img src=" + Teensref[i] +" height='200px' width='200px'>"+Teens[i] +"<br/>" ;
              document.getElementById("boys").style.display = "none";
              document.getElementById("girls").style.display = "none";
              document.getElementById("teens").style.display = "block";
@@ -188,6 +188,8 @@ function insertcategories(categories){
              document.getElementById("toys").style.display = "none";
              document.getElementById("eletronics").style.display = "none";
              document.getElementById("baby").style.display = "none";
+
+             document.getElementById("teens").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Teens[i]+"`)'><img src=" + Teensref[i] +" height='200px' width='200px'>"+Teens[i] +"</div>"+"<br/>" ;
              
              i++
          }
@@ -195,7 +197,6 @@ function insertcategories(categories){
         if(categories == 'women'){
             var i=0;
              while(i< Women.length){
-                 document.getElementById("women").innerHTML += "<img src=" + Womenref[i] +" height='200px' width='200px'>"+Women[i] +"<br/>" ;
                  document.getElementById("boys").style.display = "none";
                  document.getElementById("girls").style.display = "none";
                  document.getElementById("teens").style.display = "none";
@@ -207,13 +208,14 @@ function insertcategories(categories){
                  document.getElementById("toys").style.display = "none";
                  document.getElementById("eletronics").style.display = "none";
                  document.getElementById("baby").style.display = "none";
+
+                 document.getElementById("women").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Women[i]+"`)'><img src=" + Womenref[i] +" height='200px' width='200px'>"+Women[i] +"</div>"+"<br/>" ;
                  i++
              }
             }
             if(categories == 'men'){
                 var i=0;
                  while(i< Men.length){
-                     document.getElementById("men").innerHTML += "<img src=" + Menref[i] +" height='200px' width='200px'>"+Men[i] +"<br/>" ;
                      document.getElementById("boys").style.display = "none";
                      document.getElementById("girls").style.display = "none";
                      document.getElementById("teens").style.display = "none";
@@ -225,13 +227,14 @@ function insertcategories(categories){
                      document.getElementById("toys").style.display = "none";
                      document.getElementById("eletronics").style.display = "none";
                      document.getElementById("baby").style.display = "none";
+
+                     document.getElementById("men").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Men[i]+"`)'><img src=" + Menref[i] +" height='200px' width='200px'>"+Men[i] +"</div>"+"<br/>" ;
                      i++
                  }
                 }
                 if(categories == 'beauty'){
                     var i=0;
                      while(i< Beauty.length){
-                         document.getElementById("beauty").innerHTML += "<img src=" + Beautyref[i] +" height='200px' width='200px'>"+Beauty[i] +"<br/>" ;
                          document.getElementById("boys").style.display = "none";
                          document.getElementById("girls").style.display = "none";
                          document.getElementById("teens").style.display = "none";
@@ -243,6 +246,8 @@ function insertcategories(categories){
                          document.getElementById("toys").style.display = "none";
                          document.getElementById("eletronics").style.display = "none";
                          document.getElementById("baby").style.display = "none";
+
+                         document.getElementById("beauty").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Beauty[i]+"`)'><img src=" + Beautyref[i] +" height='200px' width='200px'>"+Beauty[i] +"</div>"+"<br/>" ;
                          i++
                      }
                     }
@@ -250,7 +255,6 @@ function insertcategories(categories){
                 if(categories == 'pet'){
                     var i=0;
                      while(i< Pet.length){
-                         document.getElementById("pet").innerHTML += "<img src=" + Petref[i] +" height='200px' width='200px'>"+Pet[i] +"<br/>" ;
                          document.getElementById("boys").style.display = "none";
                          document.getElementById("girls").style.display = "none";
                          document.getElementById("teens").style.display = "none";
@@ -262,13 +266,14 @@ function insertcategories(categories){
                          document.getElementById("toys").style.display = "none";
                          document.getElementById("eletronics").style.display = "none";
                          document.getElementById("baby").style.display = "none";
+
+                         document.getElementById("pet").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Pet[i]+"`)'><img src=" + Petref[i] +" height='200px' width='200px'>"+Pet[i] +"</div>"+"<br/>" ;
                          i++
                      }
                     }
                     if(categories == 'clothing'){
                         var i=0;
                          while(i< Clothing.length){
-                             document.getElementById("clothing").innerHTML += "<img src=" + Clothingref[i] +" height='200px' width='200px'>"+ Clothing[i] +"<br/>" ;
                              document.getElementById("boys").style.display = "none";
                              document.getElementById("girls").style.display = "none";
                              document.getElementById("teens").style.display = "none";
@@ -280,13 +285,14 @@ function insertcategories(categories){
                              document.getElementById("toys").style.display = "none";
                              document.getElementById("eletronics").style.display = "none";
                              document.getElementById("baby").style.display = "none";
+
+                             document.getElementById("clothing").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Clothing[i]+"`)'><img src=" + Clothingref[i] +" height='200px' width='200px'>"+Clothing[i] +"</div>"+"<br/>" ;
                              i++
                          }
                         }
                         if(categories == 'toys'){
                             var i=0;
                              while(i< Toys.length){
-                                 document.getElementById("toys").innerHTML += "<img src=" + Toysref[i] +" height='200px' width='200px'>"+ Toys[i] +"<br/>" ;
                                  document.getElementById("boys").style.display = "none";
                                  document.getElementById("girls").style.display = "none";
                                  document.getElementById("teens").style.display = "none";
@@ -298,13 +304,14 @@ function insertcategories(categories){
                                  document.getElementById("toys").style.display = "block";
                                  document.getElementById("eletronics").style.display = "none";
                                  document.getElementById("baby").style.display = "none";
+
+                                 document.getElementById("toys").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Toys[i]+"`)'><img src=" + Toysref[i] +" height='200px' width='200px'>"+Toys[i] +"</div>"+"<br/>" ;
                                  i++
                              }
                             }
                             if(categories == 'eletronics'){
                                 var i=0;
                                  while(i< Eletronics.length){
-                                     document.getElementById("eletronics").innerHTML += "<img src=" + Eletronicsref[i] +" height='200px' width='200px'>"+Eletronics[i] +"<br/>" ;
                                      document.getElementById("boys").style.display = "none";
                                      document.getElementById("girls").style.display = "none";
                                      document.getElementById("teens").style.display = "none";
@@ -316,6 +323,8 @@ function insertcategories(categories){
                                      document.getElementById("toys").style.display = "none";
                                      document.getElementById("eletronics").style.display = "block";
                                      document.getElementById("baby").style.display = "none";
+
+                                     document.getElementById("eletronics").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Eletronics[i]+"`)'><img src=" + Eletronicsref[i] +" height='200px' width='200px'>"+Eletronics[i] +"</div>"+"<br/>" ;
                                      i++
                                  }
                                 }
@@ -334,6 +343,8 @@ function insertcategories(categories){
                         document.getElementById("toys").style.display = "none";
                         document.getElementById("eletronics").style.display = "none";
                         document.getElementById("baby").style.display = "block";
+
+                        document.getElementById("baby").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Baby[i]+"`)'><img src=" + Babyref[i] +" height='200px' width='200px'>"+Baby[i] +"</div>"+"<br/>" ;
                         i++
                     }
                 }
