@@ -453,6 +453,16 @@ showgiftlist();
 
 
 }
+
+function AddGift(){
+    z.style.display="none";
+    giftlistdiv.style.display="none";
+    y.style.display="none";
+    x.style.display="none";
+    Discountpg.style.display="none";
+    logindiv.style.display="none";
+    addGift.style.display="block";
+}
 function Giftlist(){
 z.style.display="none";
 giftlistdiv.style.display="block";
