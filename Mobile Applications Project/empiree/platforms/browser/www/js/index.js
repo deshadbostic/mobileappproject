@@ -53,6 +53,8 @@ function login(){
       console.log(result);
         username=result.Username;
         actualpassword=result.Password;
+        document.getElementById("usernametxt");
+        document.getElementById("Passwordtxt");
         if(password==actualpassword){
           console.log("you have entered the correct password")
           Giftlist(); 
