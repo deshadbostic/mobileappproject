@@ -1,7 +1,7 @@
 #container{
     height:100%;
     width:100%;
-    position: absolute;
+    position: absolute;;
     background-color: rgb(175, 108, 107);
     margin:0px;
  
@@ -22,6 +22,6 @@ body{
 }
 
 
-#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift{
+#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift,#navbar{
     display:none;   
 }  

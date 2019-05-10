@@ -2,11 +2,12 @@
 let x=document.getElementById('ProfileDisplay');
 let y=document.getElementById('Addprofile');
 let z=document.getElementById('UpdateProfile');
-let giftlist=document.getElementById('Giftlist');
-let addGift=document.getElementById("AddGift")
+let giftlistdiv=document.getElementById('Giftlist');
 let Categories=document.getElementById('Categoriesa')
 let Discountpg=document.getElementById("Discount");
 let logindiv=document.getElementById("logindiv");
+let addGift=document.getElementById("AddGift");
+let nav=document.getElementById("navbar")
 var db = new PouchDB('empiree_db');
 console.log("the device is not ready")
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -16,8 +17,32 @@ function onDeviceReady() {
     db = new PouchDB("contact_db");
     alert ("DB created!!");
 }
-function addgift() {
+db.allDocs({include_docs: true}, 
+    function(err, docs) {   
+            if (err) {
+                return console.log(err);
+            } else {
+                var num_records=docs.total_rows;
+                console.log(num_records)
+                var display_records="";
+                for(var i = 0; i < num_records; i++){
+                display_records=display_records + docs.rows[i].doc.Giftname + "<br/> $" + docs.rows[i].doc.priceofitem + "<br/>" + docs.rows[i].doc.GiftOccasion + docs.rows[i].doc.location + "<br/>" + docs.rows[i].doc.purchasestatus +"<hr/>"; 
+                } 
+                document.getElementById("Giftlist").innerHTML = display_records;
+                console.log(num_records)
+                if(num_records==0){
+                 hideeverything();
+                 y.style.display="block";
+                }
+            }
+    }
+);
+
+function addgift(name) {
         var gift=document.getElementById("gifttxt").value;
+        if(name!=null){
+            gift=name;
+        }
             var price=document.getElementById("priceamt").value;
                 var occasion=document.getElementById("occasiontxt").value;
                 var location=document.getElementById("locationtxt").value;
@@ -47,10 +72,9 @@ function Register(){
     }
     );
 }
-
 function login(){
     console.log("it ran");
-     db.get('2019-05-08T23:31:55.388Z',function callback(err,result) {         
+     db.get('2019-05-10T16:34:35.063Z',function callback(err,result) {         
       if(!err){
       console.log(result);
        let username=result.Username;
@@ -63,8 +87,8 @@ function login(){
     
         if(password==actualpassword){
           console.log("you have entered the correct password");
-          Giftlist(); 
-
+          ProfileDisplay();
+        logindiv.style.display="block";
         }else{
             alert("you have entered the wrong password")
         }
@@ -95,8 +119,23 @@ function showgiftlist() {
         }
     );
 }
-
+function addgiftname(gifta){
+    document.getElementById("gifttxt").value=gifta;
+}
 function insertcategories(categories){
+    document.getElementById("boys").innerHTML = " ";
+    document.getElementById("girls").innerHTML = " ";
+    document.getElementById("teens").innerHTML = " ";
+    document.getElementById("women").innerHTML = " ";
+    document.getElementById("men").innerHTML = " ";
+    document.getElementById("beauty").innerHTML = " ";
+    document.getElementById("pet").innerHTML = " ";
+    document.getElementById("clothing").innerHTML = " ";
+    document.getElementById("toys").innerHTML = " ";
+    document.getElementById("eletronics").innerHTML = " ";
+    document.getElementById("baby").innerHTML = " ";
+    
+ 
 
   if(categories == 'boys'){
    var i=0;
@@ -108,13 +147,14 @@ function insertcategories(categories){
         document.getElementById("men").style.display = "none";
         document.getElementById("beauty").style.display = "none";
         document.getElementById("pet").style.display = "none";
-        document.getElementById("clothing ").style.display = "none";
+        document.getElementById("clothing").style.display = "none";
         document.getElementById("toys").style.display = "none";
         document.getElementById("eletronics").style.display = "none";
-        document.getElementById("baby ").style.display = "none";
+        document.getElementById("baby").style.display = "none";
         
-        
-        document.getElementById("boys").innerHTML += "<img src=" + Boysref[i] +" height='200px' width='200px'>"+Boys[i] +"<br/>" ;
+      
+
+        document.getElementById("boys").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Boys[i]+"`)'><img src=" + Boysref[i] +" height='200px' width='200px'>"+Boys[i] +"</div>"+"<br/>" ;
         
         i++
     }
@@ -130,11 +170,12 @@ function insertcategories(categories){
         document.getElementById("men").style.display = "none";
         document.getElementById("beauty").style.display = "none";
         document.getElementById("pet").style.display = "none";
-        document.getElementById("clothing ").style.display = "none";
+        document.getElementById("clothing").style.display = "none";
         document.getElementById("toys").style.display = "none";
         document.getElementById("eletronics").style.display = "none";
-        document.getElementById("baby ").style.display = "none";
-         document.getElementById("girls").innerHTML += "<img src=" + Girlsref[i] +" height='200px' width='200px'>"+Girls[i] +"<br/>" ;
+        document.getElementById("baby").style.display = "none";
+
+         document.getElementById("girls").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Girls[i]+"`)'><img src=" + Girlsref[i] +" height='200px' width='200px'>"+Girls[i] +"</div>"+"<br/>" ;
          
          
          i++
@@ -143,7 +184,6 @@ function insertcategories(categories){
     if(categories == 'teens'){
         var i=0;
          while(i< Teens.length){
-             document.getElementById("teens").innerHTML += "<img src=" + Teensref[i] +" height='200px' width='200px'>"+Teens[i] +"<br/>" ;
              document.getElementById("boys").style.display = "none";
              document.getElementById("girls").style.display = "none";
              document.getElementById("teens").style.display = "block";
@@ -151,10 +191,12 @@ function insertcategories(categories){
              document.getElementById("men").style.display = "none";
              document.getElementById("beauty").style.display = "none";
              document.getElementById("pet").style.display = "none";
-             document.getElementById("clothing ").style.display = "none";
+             document.getElementById("clothing").style.display = "none";
              document.getElementById("toys").style.display = "none";
              document.getElementById("eletronics").style.display = "none";
-             document.getElementById("baby ").style.display = "none";
+             document.getElementById("baby").style.display = "none";
+
+             document.getElementById("teens").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Teens[i]+"`)'><img src=" + Teensref[i] +" height='200px' width='200px'>"+Teens[i] +"</div>"+"<br/>" ;
              
              i++
          }
@@ -162,7 +204,6 @@ function insertcategories(categories){
         if(categories == 'women'){
             var i=0;
              while(i< Women.length){
-                 document.getElementById("women").innerHTML += "<img src=" + Womenref[i] +" height='200px' width='200px'>"+Women[i] +"<br/>" ;
                  document.getElementById("boys").style.display = "none";
                  document.getElementById("girls").style.display = "none";
                  document.getElementById("teens").style.display = "none";
@@ -170,17 +211,18 @@ function insertcategories(categories){
                  document.getElementById("men").style.display = "none";
                  document.getElementById("beauty").style.display = "none";
                  document.getElementById("pet").style.display = "none";
-                 document.getElementById("clothing ").style.display = "none";
+                 document.getElementById("clothing").style.display = "none";
                  document.getElementById("toys").style.display = "none";
                  document.getElementById("eletronics").style.display = "none";
-                 document.getElementById("baby ").style.display = "none";
+                 document.getElementById("baby").style.display = "none";
+
+                 document.getElementById("women").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Women[i]+"`)'><img src=" + Womenref[i] +" height='200px' width='200px'>"+Women[i] +"</div>"+"<br/>" ;
                  i++
              }
             }
             if(categories == 'men'){
                 var i=0;
                  while(i< Men.length){
-                     document.getElementById("men").innerHTML += "<img src=" + Menref[i] +" height='200px' width='200px'>"+Men[i] +"<br/>" ;
                      document.getElementById("boys").style.display = "none";
                      document.getElementById("girls").style.display = "none";
                      document.getElementById("teens").style.display = "none";
@@ -188,17 +230,18 @@ function insertcategories(categories){
                      document.getElementById("men").style.display = "block";
                      document.getElementById("beauty").style.display = "none";
                      document.getElementById("pet").style.display = "none";
-                     document.getElementById("clothing ").style.display = "none";
+                     document.getElementById("clothing").style.display = "none";
                      document.getElementById("toys").style.display = "none";
                      document.getElementById("eletronics").style.display = "none";
-                     document.getElementById("baby ").style.display = "none";
+                     document.getElementById("baby").style.display = "none";
+
+                     document.getElementById("men").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Men[i]+"`)'><img src=" + Menref[i] +" height='200px' width='200px'>"+Men[i] +"</div>"+"<br/>" ;
                      i++
                  }
                 }
                 if(categories == 'beauty'){
                     var i=0;
                      while(i< Beauty.length){
-                         document.getElementById("beauty").innerHTML += "<img src=" + Beautyref[i] +" height='200px' width='200px'>"+Beauty[i] +"<br/>" ;
                          document.getElementById("boys").style.display = "none";
                          document.getElementById("girls").style.display = "none";
                          document.getElementById("teens").style.display = "none";
@@ -206,10 +249,12 @@ function insertcategories(categories){
                          document.getElementById("men").style.display = "none";
                          document.getElementById("beauty").style.display = "block";
                          document.getElementById("pet").style.display = "none";
-                         document.getElementById("clothing ").style.display = "none";
+                         document.getElementById("clothing").style.display = "none";
                          document.getElementById("toys").style.display = "none";
                          document.getElementById("eletronics").style.display = "none";
-                         document.getElementById("baby ").style.display = "none";
+                         document.getElementById("baby").style.display = "none";
+
+                         document.getElementById("beauty").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Beauty[i]+"`)'><img src=" + Beautyref[i] +" height='200px' width='200px'>"+Beauty[i] +"</div>"+"<br/>" ;
                          i++
                      }
                     }
@@ -217,7 +262,6 @@ function insertcategories(categories){
                 if(categories == 'pet'){
                     var i=0;
                      while(i< Pet.length){
-                         document.getElementById("pet").innerHTML += "<img src=" + Petref[i] +" height='200px' width='200px'>"+Pet[i] +"<br/>" ;
                          document.getElementById("boys").style.display = "none";
                          document.getElementById("girls").style.display = "none";
                          document.getElementById("teens").style.display = "none";
@@ -225,17 +269,18 @@ function insertcategories(categories){
                          document.getElementById("men").style.display = "none";
                          document.getElementById("beauty").style.display = "none";
                          document.getElementById("pet").style.display = "block";
-                         document.getElementById("clothing ").style.display = "none";
+                         document.getElementById("clothing").style.display = "none";
                          document.getElementById("toys").style.display = "none";
                          document.getElementById("eletronics").style.display = "none";
-                         document.getElementById("baby ").style.display = "none";
+                         document.getElementById("baby").style.display = "none";
+
+                         document.getElementById("pet").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Pet[i]+"`)'><img src=" + Petref[i] +" height='200px' width='200px'>"+Pet[i] +"</div>"+"<br/>" ;
                          i++
                      }
                     }
                     if(categories == 'clothing'){
                         var i=0;
                          while(i< Clothing.length){
-                             document.getElementById("clothing").innerHTML += "<img src=" + Clothingref[i] +" height='200px' width='200px'>"+ Clothing[i] +"<br/>" ;
                              document.getElementById("boys").style.display = "none";
                              document.getElementById("girls").style.display = "none";
                              document.getElementById("teens").style.display = "none";
@@ -243,17 +288,18 @@ function insertcategories(categories){
                              document.getElementById("men").style.display = "none";
                              document.getElementById("beauty").style.display = "none";
                              document.getElementById("pet").style.display = "none";
-                             document.getElementById("clothing ").style.display = "block";
+                             document.getElementById("clothing").style.display = "block";
                              document.getElementById("toys").style.display = "none";
                              document.getElementById("eletronics").style.display = "none";
-                             document.getElementById("baby ").style.display = "none";
+                             document.getElementById("baby").style.display = "none";
+
+                             document.getElementById("clothing").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Clothing[i]+"`)'><img src=" + Clothingref[i] +" height='200px' width='200px'>"+Clothing[i] +"</div>"+"<br/>" ;
                              i++
                          }
                         }
                         if(categories == 'toys'){
                             var i=0;
                              while(i< Toys.length){
-                                 document.getElementById("toys").innerHTML += "<img src=" + Toysref[i] +" height='200px' width='200px'>"+ Toys[i] +"<br/>" ;
                                  document.getElementById("boys").style.display = "none";
                                  document.getElementById("girls").style.display = "none";
                                  document.getElementById("teens").style.display = "none";
@@ -261,17 +307,18 @@ function insertcategories(categories){
                                  document.getElementById("men").style.display = "none";
                                  document.getElementById("beauty").style.display = "none";
                                  document.getElementById("pet").style.display = "none";
-                                 document.getElementById("clothing ").style.display = "none";
+                                 document.getElementById("clothing").style.display = "none";
                                  document.getElementById("toys").style.display = "block";
                                  document.getElementById("eletronics").style.display = "none";
-                                 document.getElementById("baby ").style.display = "none";
+                                 document.getElementById("baby").style.display = "none";
+
+                                 document.getElementById("toys").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Toys[i]+"`)'><img src=" + Toysref[i] +" height='200px' width='200px'>"+Toys[i] +"</div>"+"<br/>" ;
                                  i++
                              }
                             }
-                            if(categories == 'electronics'){
+                            if(categories == 'eletronics'){
                                 var i=0;
                                  while(i< Eletronics.length){
-                                     document.getElementById("eletronics").innerHTML += "<img src=" + Eletronicsref[i] +" height='200px' width='200px'>"+ Eletronics[i] +"<br/>" ;
                                      document.getElementById("boys").style.display = "none";
                                      document.getElementById("girls").style.display = "none";
                                      document.getElementById("teens").style.display = "none";
@@ -279,32 +326,36 @@ function insertcategories(categories){
                                      document.getElementById("men").style.display = "none";
                                      document.getElementById("beauty").style.display = "none";
                                      document.getElementById("pet").style.display = "none";
-                                     document.getElementById("clothing ").style.display = "none";
+                                     document.getElementById("clothing").style.display = "none";
                                      document.getElementById("toys").style.display = "none";
                                      document.getElementById("eletronics").style.display = "block";
-                                     document.getElementById("baby ").style.display = "none";
+                                     document.getElementById("baby").style.display = "none";
+
+                                     document.getElementById("eletronics").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Eletronics[i]+"`)'><img src=" + Eletronicsref[i] +" height='200px' width='200px'>"+Eletronics[i] +"</div>"+"<br/>" ;
                                      i++
                                  }
                                 }
-                                if(categories == 'baby'){
-                                    var i=0;
-                                     while(i< Baby.length){
-                                         document.getElementById("baby").innerHTML += "<img src=" + Babyref[i] +" height='200px' width='200px'>"+ Baby[i] +"<br/>" ;
-                                         document.getElementById("boys").style.display = "none";
-                                         document.getElementById("girls").style.display = "none";
-                                         document.getElementById("teens").style.display = "none";
-                                         document.getElementById("women").style.display = "none";
-                                         document.getElementById("men").style.display = "none";
-                                         document.getElementById("beauty").style.display = "none";
-                                         document.getElementById("pet").style.display = "none";
-                                         document.getElementById("clothing ").style.display = "none";
-                                         document.getElementById("toys").style.display = "none";
-                                         document.getElementById("eletronics").style.display = "none";
-                                         document.getElementById("baby ").style.display = "block";
-                                         i++
-                                     }
-                                    }
-            
+            if(categories == 'baby'){
+                var i=0;
+                    while(i< Baby.length){
+                        document.getElementById("baby").innerHTML += "<img src=" + Babyref[i] +" height='200px' width='200px'>"+ Baby[i] +"<br/>" ;
+                        document.getElementById("boys").style.display = "none";
+                        document.getElementById("girls").style.display = "none";
+                        document.getElementById("teens").style.display = "none";
+                        document.getElementById("women").style.display = "none";
+                        document.getElementById("men").style.display = "none";
+                        document.getElementById("beauty").style.display = "none";
+                        document.getElementById("pet").style.display = "none";
+                        document.getElementById("clothing").style.display = "none";
+                        document.getElementById("toys").style.display = "none";
+                        document.getElementById("eletronics").style.display = "none";
+                        document.getElementById("baby").style.display = "block";
+
+                        document.getElementById("baby").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Baby[i]+"`)'><img src=" + Babyref[i] +" height='200px' width='200px'>"+Baby[i] +"</div>"+"<br/>" ;
+                        i++
+                    }
+                }
+
         
                         
     
@@ -322,52 +373,76 @@ function insertcategories(categories){
 // }
 
 function ProfileDisplay(){
-    giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     x.style.display="block";
     y.style.display="none";
     z.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
     logindiv.style.display="none";
+    addGift.style.display="none";
 }
 
 function Addprofile(){
-   giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     x.style.display="none";
     z.style.display="none";
     y.style.display="block";
     logindiv.style.display="none";
     Discountpg.style.display="none";
 
-
+    addGift.style.display="none";
 }
 
 function UpdateProfile(){
-    giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     y.style.display="none";
     z.style.display="block";
     x.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
     logindiv.style.display="none";
+    addGift.style.display="none";
 }
+function autofill(suggest){
+    var gift=document.getElementById(suggest).value;
+    var price=document.getElementById("priceamt").value;
+        var occasion=document.getElementById("occasiontxt").value;
+        var location=document.getElementById("locationtxt").value;
+        var status=false;
+var contact = {
+ _id: new Date().toISOString(),Giftname: gift,priceofitem: price,GiftOccasion: occasion,location:location,purchasestatus:status  
+};  
+   db.put(contact, function callback(err, result) {
+       if (!err) {console.log('Successfully saved a contact!');
+           alert ("Record added!!");
 
+        }
+   }   
+   );
+showgiftlist();
+
+
+}
 function Giftlist(){
 z.style.display="none";
-giftlist.style.display="block";
+giftlistdiv.style.display="block";
 y.style.display="none";
 x.style.display="none";
 Discountpg.style.display="none";
 logindiv.style.display="none";
+addGift.style.display="none";
 }
 
 function Discount(){
     z.style.display="none";
-    giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     y.style.display="none";
     x.style.display="none";
     Discountpg.style.display="block";
     logindiv.style.display="none";
+    addGift.style.display="none";
+    
     }
 function Categoriesa(){
 Categories.style.display="block";
@@ -375,10 +450,31 @@ x.style.display="none";
 y.style.display="none";
 Discountpg.style.display="none";
 z.style.display="none";
-giftlist.style.display="none"
+giftlistdiv.style.display="none"
 logindiv.style.display="none";
-
+addGift.style.display="none";
 }
+function showaddgift(){
+    Categories.style.display="none";
+    x.style.display="none";
+    y.style.display="none";
+    Discountpg.style.display="none";
+    z.style.display="none";
+    giftlistdiv.style.display="none"
+    logindiv.style.display="none";
+    addGift.style.display="block";
+    }
+    function hideeverything(){
+        Categories.style.display="none";
+        x.style.display="none";
+        y.style.display="none";
+        Discountpg.style.display="none";
+        z.style.display="none";
+        giftlistdiv.style.display="none"
+        logindiv.style.display="none";
+        addGift.style.display="none";
+        nav.style.display="none";
+        }
 
 
   function calculate(){
@@ -428,21 +524,6 @@ var Eletronics= ["Smartphone", "Drones", "Xbox","PS4","Cameras","Controllers","L
 var Eletronicsref= ["Amges/smartphone.jpg","Amges/drones.jpg","Amges/xbox.jpeg","Amges/ps4.jpg","Amges/camera.jpeg","Amges/controller.jpeg","Amges/laptop.jpg","Amges/keyboard.jpg","Amges/mouse.jpg","Amges/cpu.jpg","Amges/motherboar.jpg","Amges/powersupply.jpg","Amges/harddrive.jpg","Amges/solidstatedrive.jpg","Amges/monitor.jpg","Amges/ram.jpg","Amges/headphones.jpg","Amges/speaker.jpeg","Amges/accessories.jpg"];
 var Baby = ["Building Blocks", "Rattles", "Stacking Rings","Rubber Ducky","Stuffed Giraffe","Xylophone","Car Seats","Diaper","Bibs","wipes","Baby Onesie"];
 var Babyref = ["Amges/stackingrings.jpeg","Amges/buildingblocks.jpeg","Amges/accessories.jpg","Amges/babyonesie.jpg","Amges/bibs.jpeg","Amges/carseat.jpeg","Amges/diaper.jpeg","Amges/Rattles.jpeg","Amges/rubberducky.jpeg","stuffedGiraffe.jpeg","Amges/wipes.jpeg","Amges/xylophone.jpeg"];
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

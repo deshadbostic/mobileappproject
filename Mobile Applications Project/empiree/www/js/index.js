@@ -7,6 +7,7 @@ let Categories=document.getElementById('Categoriesa')
 let Discountpg=document.getElementById("Discount");
 let logindiv=document.getElementById("logindiv");
 let addGift=document.getElementById("AddGift");
+let nav=document.getElementById("navbar")
 var db = new PouchDB('empiree_db');
 console.log("the device is not ready")
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -22,11 +23,17 @@ db.allDocs({include_docs: true},
                 return console.log(err);
             } else {
                 var num_records=docs.total_rows;
+                console.log(num_records)
                 var display_records="";
                 for(var i = 0; i < num_records; i++){
                 display_records=display_records + docs.rows[i].doc.Giftname + "<br/> $" + docs.rows[i].doc.priceofitem + "<br/>" + docs.rows[i].doc.GiftOccasion + docs.rows[i].doc.location + "<br/>" + docs.rows[i].doc.purchasestatus +"<hr/>"; 
                 } 
                 document.getElementById("Giftlist").innerHTML = display_records;
+                console.log(num_records)
+                if(num_records==0){
+                 hideeverything();
+                 y.style.display="block";
+                }
             }
     }
 );
@@ -67,7 +74,7 @@ function Register(){
 }
 function login(){
     console.log("it ran");
-     db.get('2019-05-10T14:28:40.085Z',function callback(err,result) {         
+     db.get('2019-05-10T16:34:35.063Z',function callback(err,result) {         
       if(!err){
       console.log(result);
        let username=result.Username;
@@ -81,7 +88,7 @@ function login(){
         if(password==actualpassword){
           console.log("you have entered the correct password");
           ProfileDisplay();
-
+        logindiv.style.display="block";
         }else{
             alert("you have entered the wrong password")
         }
@@ -457,6 +464,17 @@ function showaddgift(){
     logindiv.style.display="none";
     addGift.style.display="block";
     }
+    function hideeverything(){
+        Categories.style.display="none";
+        x.style.display="none";
+        y.style.display="none";
+        Discountpg.style.display="none";
+        z.style.display="none";
+        giftlistdiv.style.display="none"
+        logindiv.style.display="none";
+        addGift.style.display="none";
+        nav.style.display="none";
+        }
 
 
   function calculate(){
