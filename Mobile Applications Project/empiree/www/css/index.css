@@ -58,7 +58,7 @@ body{
 }
 
 
-#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift,#navbar{
+#Addprofile,#UpdateProfile,#Giftlist,#Discount,#Categoriesa,#ProfileDisplay,#AddGift{
     display:none;   
 }  
 .butto{
@@ -89,5 +89,8 @@ body{
     
 }
 #AddGift{
+    color:white;
+}
+#UpdateProfile,#navbar{
     color:white;
 }
