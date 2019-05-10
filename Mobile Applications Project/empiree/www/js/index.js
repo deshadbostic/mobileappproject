@@ -2,10 +2,11 @@
 let x=document.getElementById('ProfileDisplay');
 let y=document.getElementById('Addprofile');
 let z=document.getElementById('UpdateProfile');
-let giftlist=document.getElementById('Giftlist');
+let giftlistdiv=document.getElementById('Giftlist');
 let Categories=document.getElementById('Categoriesa')
 let Discountpg=document.getElementById("Discount");
-
+let logindiv=document.getElementById("logindiv");
+let addGift=document.getElementById("AddGift");
 var db = new PouchDB('empiree_db');
 console.log("the device is not ready")
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -15,8 +16,26 @@ function onDeviceReady() {
     db = new PouchDB("contact_db");
     alert ("DB created!!");
 }
-function addgift() {
+db.allDocs({include_docs: true}, 
+    function(err, docs) {   
+            if (err) {
+                return console.log(err);
+            } else {
+                var num_records=docs.total_rows;
+                var display_records="";
+                for(var i = 0; i < num_records; i++){
+                display_records=display_records + docs.rows[i].doc.Giftname + "<br/> $" + docs.rows[i].doc.priceofitem + "<br/>" + docs.rows[i].doc.GiftOccasion + docs.rows[i].doc.location + "<br/>" + docs.rows[i].doc.purchasestatus +"<hr/>"; 
+                } 
+                document.getElementById("Giftlist").innerHTML = display_records;
+            }
+    }
+);
+
+function addgift(name) {
         var gift=document.getElementById("gifttxt").value;
+        if(name!=null){
+            gift=name;
+        }
             var price=document.getElementById("priceamt").value;
                 var occasion=document.getElementById("occasiontxt").value;
                 var location=document.getElementById("locationtxt").value;
@@ -48,20 +67,27 @@ function Register(){
 }
 function login(){
     console.log("it ran");
-     db.get('2019-05-08T23:31:55.388Z',function callback(err,result) {         
+     db.get('2019-05-10T14:28:40.085Z',function callback(err,result) {         
       if(!err){
       console.log(result);
-        username=result.Username;
-        actualpassword=result.Password;
-        document.getElementById("usernametxt");
-    let actualpassword= document.getElementById("Passwordtxt");
+       let username=result.Username;
+       let actualpassword=result.Password;
+      let actnam=  document.getElementById("usernametxt").value;
+    let password= document.getElementById("passwordtxt").value;
+    console.log(actnam,actualpassword)
+    if(username==actnam){
+      
+    
         if(password==actualpassword){
-          console.log("you have entered the correct password")
-          Giftlist(); 
+          console.log("you have entered the correct password");
+          ProfileDisplay();
 
         }else{
             alert("you have entered the wrong password")
         }
+    }else{
+        alert("This user does not exist")
+    }
         } 
       else{
           console.log(err);
@@ -86,7 +112,9 @@ function showgiftlist() {
         }
     );
 }
-
+function addgiftname(gifta){
+    document.getElementById("gifttxt").value=gifta;
+}
 function insertcategories(categories){
     document.getElementById("boys").innerHTML = " ";
     document.getElementById("girls").innerHTML = " ";
@@ -117,8 +145,9 @@ function insertcategories(categories){
         document.getElementById("eletronics").style.display = "none";
         document.getElementById("baby").style.display = "none";
         
+      
 
-        document.getElementById("boys").innerHTML += "<img src=" + Boysref[i] +" height='200px' width='200px'>"+Boys[i] +"<br/>" ;
+        document.getElementById("boys").innerHTML += "<div onclick='showaddgift(); addgiftname(`"+Boys[i]+"`)'><img src=" + Boysref[i] +" height='200px' width='200px'>"+Boys[i] +"</div>"+"<br/>" ;
         
         i++
     }
@@ -326,48 +355,76 @@ function insertcategories(categories){
 // }
 
 function ProfileDisplay(){
-    giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     x.style.display="block";
     y.style.display="none";
     z.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
+    logindiv.style.display="none";
+    addGift.style.display="none";
 }
 
 function Addprofile(){
-   giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     x.style.display="none";
     z.style.display="none";
     y.style.display="block";
-
+    logindiv.style.display="none";
     Discountpg.style.display="none";
 
-
+    addGift.style.display="none";
 }
 
 function UpdateProfile(){
-    giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     y.style.display="none";
     z.style.display="block";
     x.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
+    logindiv.style.display="none";
+    addGift.style.display="none";
 }
+function autofill(suggest){
+    var gift=document.getElementById(suggest).value;
+    var price=document.getElementById("priceamt").value;
+        var occasion=document.getElementById("occasiontxt").value;
+        var location=document.getElementById("locationtxt").value;
+        var status=false;
+var contact = {
+ _id: new Date().toISOString(),Giftname: gift,priceofitem: price,GiftOccasion: occasion,location:location,purchasestatus:status  
+};  
+   db.put(contact, function callback(err, result) {
+       if (!err) {console.log('Successfully saved a contact!');
+           alert ("Record added!!");
 
+        }
+   }   
+   );
+showgiftlist();
+
+
+}
 function Giftlist(){
 z.style.display="none";
-giftlist.style.display="block";
+giftlistdiv.style.display="block";
 y.style.display="none";
 x.style.display="none";
 Discountpg.style.display="none";
+logindiv.style.display="none";
+addGift.style.display="none";
 }
 
 function Discount(){
     z.style.display="none";
-    giftlist.style.display="none";
+    giftlistdiv.style.display="none"
     y.style.display="none";
     x.style.display="none";
     Discountpg.style.display="block";
+    logindiv.style.display="none";
+    addGift.style.display="none";
+    
     }
 function Categoriesa(){
 Categories.style.display="block";
@@ -375,9 +432,20 @@ x.style.display="none";
 y.style.display="none";
 Discountpg.style.display="none";
 z.style.display="none";
-giftlist.style.display="none"
-
+giftlistdiv.style.display="none"
+logindiv.style.display="none";
+addGift.style.display="none";
 }
+function showaddgift(){
+    Categories.style.display="none";
+    x.style.display="none";
+    y.style.display="none";
+    Discountpg.style.display="none";
+    z.style.display="none";
+    giftlistdiv.style.display="none"
+    logindiv.style.display="none";
+    addGift.style.display="block";
+    }
 
 
   function calculate(){
