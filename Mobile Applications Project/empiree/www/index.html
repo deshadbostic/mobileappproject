@@ -15,28 +15,31 @@
            
 
         <div id="navbar">
-            <button id="home" onclick="ProfileDisplay()">Home</button>
-            <button id="update" onclick="UpdateProfile()">Update Profile </button>
-            <button id="giftList" onclick="Giftlist()"> GiftList</button>
-            <button id="discount" onclick="Discount()"> Discount</button>
-            <button id="Prearranged List" onclick="Categoriesa(),insertcategories()"> Prearranged List</button>
+            <button class="butte" id="home" onclick="ProfileDisplay()">Home</button>
+            <button class="butte"id="update" onclick="UpdateProfile()">Update Profile </button>
+            <button class="butte"id="giftList" onclick="Giftlist()"> GiftList</button>
+            <button class="butte"id="discount" onclick="Discount()"> Discount</button>
+            <button class="butte"id="Prearranged List" onclick="Categoriesa(),insertcategories()"> Prearranged List</button>
 
         </div>
         <div id="Categoriesa">
-            <button onclick="insertcategories('boys');"> BOYS</button>
-            <button onclick="insertcategories('girls');"> GIRLS</button>
-            <button onclick="insertcategories('teens');"> TEENS</button>
-            <button onclick="insertcategories('women');"> WOMEN</button>
-            <button onclick="insertcategories('men');"> MEN</button>
-            <button onclick="insertcategories('beauty');"> BEAUTY</button>
-            <button onclick="insertcategories('pet');"> PET</button>
-            <button onclick="insertcategories('clothing');"> CLOTHING</button>
-            <button onclick="insertcategories('toys');"> TOYS</button>
-            <button onclick="insertcategories('eletronics');"> ELETRONICS</button>
-            <button onclick="insertcategories('baby');"> BABY</button>
+            <center>
+            <button class="butto" onclick="insertcategories('boys');"> BOYS</button>
+            <button class="butto"onclick="insertcategories('girls');"> GIRLS</button>
+            <button class="butto"onclick="insertcategories('teens');"> TEENS</button>
+            <button class="butto"onclick="insertcategories('women');"> WOMEN</button>
+           
+            <button class="butto"onclick="insertcategories('men');"> MEN</button>
+            <br>
+            <button class="butto" onclick="insertcategories('beauty');"> BEAUTY</button>
+            <button class="butto" onclick="insertcategories('pet');"> PET</button>
+            <button class="butto" onclick="insertcategories('clothing');"> CLOTHING</button>
+            <button class="butto" onclick="insertcategories('toys');"> TOYS</button>
+            <button  class="butto"onclick="insertcategories('eletronics');"> ELETRONICS</button>
+        </center>
 
 
-
+<center>
             <div id="boys"></div>
             <div id="girls"></div>
             <div id="teens"></div>
@@ -48,20 +51,30 @@
             <div id="toys"></div>
             <div id="eletronics"></div>
             <div id="baby"></div>
-            
+        </center>
             
         </div>
-        <div id="logindiv"> Please log in 
-                Username: <input id="usernametxt">  
-                Password: <input type="password" id="passwordtxt">
-                <button onclick="login();"> log in</button>
+        <div id="logindiv"> 
+            <center>
+                <h1>Empire´</h1>
+                <h3>Please log in </h3>
+                Username: <input class="tat" id="usernametxt">  
+                <br/>
+                Password: <input class="tat"type="password" id="passwordtxt">
+                <br/>
+                <br/>
+                <button class="but" onclick="login();"> log in</button>
+            </center>
                 </div>
         <div id="ProfileDisplay">
-                Welcome
-                <h1> Empiree</h1>
-                <button onclick="Giftlist();"> thanks for the clutch welcome</button>
+            <center>
+                
+                <h1> Empire´</h1>
+                <p> Welcome username</p>
+                <img src="Amges/dress.jpeg">
+            </center>
               
-       <p> username</p>
+       
     </div>
             <div id="Addprofile">
                 username:<input id="username"> <br />
@@ -82,18 +95,20 @@
                 
             </div>
             <div id="Discount">
+                <center>
                 Enter Price:
                 <br />
-                $<input type="text" id="itemPrice" Placeholder="Enter Original Price">
+                $<input type="text" class="tat"d="itemPrice" Placeholder="Enter Original Price">
                 <br>
 
                 Enter Discount:
                 <br />
-                <input type="text" id="discountPercentage" Placeholder="Enter Discount">%
+                <input type="text" class="tat"id="discountPercentage" Placeholder="Enter Discount">%
                 <br />
-                <button id="calculate" onclick="calculate();"> Calculate</button>
+                <button class="but" id="calculate" onclick="calculate();"> Calculate</button>
                 <br />
                 <span id="result"></span>
+            </center>
             </div>
             <script src="js/index.js"> </script>
             <!-- <script type="text/javascript" src="cordova.js"></script> -->
