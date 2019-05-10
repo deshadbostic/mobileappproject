@@ -10,6 +10,7 @@
     <body>
    <div id="container">
 <div id="responsive_container"> 
+    <div id="navbar"><button> </button> <button> </button> <button> </button> <button> </button> <button> </button> <button> </button> <button> </button></div>
     <div id="Categoriesa">  </div>
     <div id="ProfileDisplay">
         Welcome
@@ -32,6 +33,20 @@
               where are you going to get the item from <input id="locationtxt"> <br/>
               <button onclick="addgift();"> enter gift</button>
             </div>
+            <div id="Discount">
+                    Enter Price: 
+                    <br/>
+                    $<input type="text" id="itemPrice" Placeholder="Enter Original Price">
+                     <br>
+                     
+                     Enter Discount:
+                     <br/>
+                     <input type="text" id="discountPercentage" Placeholder="Enter Discount">%
+                     <br/>
+                     <button id="calculate" onclick="calculate();"> Calculate</button>
+                     <br/>
+                     <span id="result"></span>
+                 </div>
             <script src="js/index.js"> </script>
         <!-- <script type="text/javascript" src="cordova.js"></script> -->
      </div>

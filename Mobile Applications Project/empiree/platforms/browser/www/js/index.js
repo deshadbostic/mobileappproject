@@ -52,8 +52,14 @@ function login(){
       if(!err){
       console.log(result);
         username=result.Username;
-        password=result.Password;
-        
+        actualpassword=result.Password;
+        if(password==actualpassword){
+          console.log("you have entered the correct password")
+          Giftlist(); 
+
+        }else{
+            alert("you have entered the wrong password")
+        }
         } 
       else{
           console.log(err);
@@ -131,6 +137,28 @@ z.style.display="none";
 gift.style.display="none"
 
 }
+
+
+  function calculate(){
+    var price = document.getElementById("itemPrice").value;
+    var fDiscount = document.getElementById("discountPercentage").value;
+    discount = fDiscount / 100;
+
+
+    var final_discount =0;
+    final_discount = (price*discount);
+    final_price = price - final_discount;
+     
+      document.getElementById("result").innerHTML  =  final_price ;
+}
+
+
+
+
+
+
+
+
 
 
 
