@@ -63,7 +63,7 @@ function Register(){
     var username=document.getElementById("username").value;
     var password=document.getElementById("password").value;
     var credentials={
-        _id:new Date().toISOString(),Username:username,Password:password };
+        _id:'001',Username:username,Password:password };
     db.put(credentials,function callback(err, result) {
         if (!err){
             console.log('Succefully logged in!');
@@ -74,7 +74,7 @@ function Register(){
 }
 function login(){
     console.log("it ran");
-     db.get('2019-05-10T16:34:35.063Z',function callback(err,result) {         
+     db.get('001',function callback(err,result) {         
       if(!err){
       console.log(result);
        let username=result.Username;
@@ -88,7 +88,8 @@ function login(){
         if(password==actualpassword){
           console.log("you have entered the correct password");
           ProfileDisplay();
-        logindiv.style.display="block";
+        logindiv.style.display="none";
+        nav.style.display="block";
         }else{
             alert("you have entered the wrong password")
         }
@@ -102,7 +103,16 @@ function login(){
 
      })   
 }
-
+function updatelogin(){
+confirmation= document.getElementById('confirmpass');
+if(confirmation.value==actualpassword){
+  confirmation.style.display="none";
+  change.style.display="block"; 
+  
+}else{
+    alert('Incorrect password');
+}
+}
 function showgiftlist() {
     db.allDocs({include_docs: true}, 
         function(err, docs) {   
