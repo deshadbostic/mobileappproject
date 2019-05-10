@@ -27,6 +27,13 @@ db.allDocs({include_docs: true},
                 console.log(num_records)
                 var display_records="";
                 for(var i = 0; i < num_records; i++){
+                    console.log('just before')
+                    console.log(i)
+                    if(i==0){
+                        console.log("will it")
+                       continue;
+                    }
+                    console.log("this is i"+i)
                 display_records=display_records + docs.rows[i].doc.Giftname + "<br/> $" + docs.rows[i].doc.priceofitem + "<br/>" + docs.rows[i].doc.GiftOccasion + docs.rows[i].doc.location + "<br/>" + docs.rows[i].doc.purchasestatus +"<hr/>"; 
                 } 
                 document.getElementById("Giftlist").innerHTML = display_records;
@@ -141,6 +148,10 @@ function showgiftlist() {
                     var num_records=docs.total_rows;
                     var display_records="";
                     for(var i = 0; i < num_records; i++){
+                        if(i==0){
+                            console.log("will it")
+                           continue;
+                        }
                     display_records=display_records + docs.rows[i].doc.Giftname + "<br/> $" + docs.rows[i].doc.priceofitem + "<br/>" + docs.rows[i].doc.GiftOccasion + docs.rows[i].doc.location + "<br/>" + docs.rows[i].doc.purchasestatus +"<hr/>"; 
                     } 
                     document.getElementById("Giftlist").innerHTML = display_records;
