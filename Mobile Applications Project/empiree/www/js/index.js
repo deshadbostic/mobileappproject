@@ -3,10 +3,9 @@ let x=document.getElementById('ProfileDisplay');
 let y=document.getElementById('Addprofile');
 let z=document.getElementById('UpdateProfile');
 let giftlist=document.getElementById('Giftlist');
-let addGift=document.getElementById("AddGift")
 let Categories=document.getElementById('Categoriesa')
 let Discountpg=document.getElementById("Discount");
-let logindiv=document.getElementById("logindiv");
+
 var db = new PouchDB('empiree_db');
 console.log("the device is not ready")
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -47,30 +46,22 @@ function Register(){
     }
     );
 }
-
 function login(){
     console.log("it ran");
      db.get('2019-05-08T23:31:55.388Z',function callback(err,result) {         
       if(!err){
       console.log(result);
-       let username=result.Username;
-       let actualpassword=result.Password;
-      let actnam=  document.getElementById("usernametxt").value;
-    let password= document.getElementById("passwordtxt").value;
-    console.log(actnam,actualpassword)
-    if(username==actnam){
-      
-    
+        username=result.Username;
+        actualpassword=result.Password;
+        document.getElementById("usernametxt");
+    let actualpassword= document.getElementById("Passwordtxt");
         if(password==actualpassword){
-          console.log("you have entered the correct password");
+          console.log("you have entered the correct password")
           Giftlist(); 
 
         }else{
             alert("you have entered the wrong password")
         }
-    }else{
-        alert("This user does not exist")
-    }
         } 
       else{
           console.log(err);
@@ -97,6 +88,19 @@ function showgiftlist() {
 }
 
 function insertcategories(categories){
+    document.getElementById("boys").innerHTML = " ";
+    document.getElementById("girls").innerHTML = " ";
+    document.getElementById("teens").innerHTML = " ";
+    document.getElementById("women").innerHTML = " ";
+    document.getElementById("men").innerHTML = " ";
+    document.getElementById("beauty").innerHTML = " ";
+    document.getElementById("pet").innerHTML = " ";
+    document.getElementById("clothing").innerHTML = " ";
+    document.getElementById("toys").innerHTML = " ";
+    document.getElementById("eletronics").innerHTML = " ";
+    document.getElementById("baby").innerHTML = " ";
+    
+ 
 
   if(categories == 'boys'){
    var i=0;
@@ -108,12 +112,12 @@ function insertcategories(categories){
         document.getElementById("men").style.display = "none";
         document.getElementById("beauty").style.display = "none";
         document.getElementById("pet").style.display = "none";
-        document.getElementById("clothing ").style.display = "none";
+        document.getElementById("clothing").style.display = "none";
         document.getElementById("toys").style.display = "none";
         document.getElementById("eletronics").style.display = "none";
-        document.getElementById("baby ").style.display = "none";
+        document.getElementById("baby").style.display = "none";
         
-        
+
         document.getElementById("boys").innerHTML += "<img src=" + Boysref[i] +" height='200px' width='200px'>"+Boys[i] +"<br/>" ;
         
         i++
@@ -130,10 +134,10 @@ function insertcategories(categories){
         document.getElementById("men").style.display = "none";
         document.getElementById("beauty").style.display = "none";
         document.getElementById("pet").style.display = "none";
-        document.getElementById("clothing ").style.display = "none";
+        document.getElementById("clothing").style.display = "none";
         document.getElementById("toys").style.display = "none";
         document.getElementById("eletronics").style.display = "none";
-        document.getElementById("baby ").style.display = "none";
+        document.getElementById("baby").style.display = "none";
          document.getElementById("girls").innerHTML += "<img src=" + Girlsref[i] +" height='200px' width='200px'>"+Girls[i] +"<br/>" ;
          
          
@@ -151,10 +155,10 @@ function insertcategories(categories){
              document.getElementById("men").style.display = "none";
              document.getElementById("beauty").style.display = "none";
              document.getElementById("pet").style.display = "none";
-             document.getElementById("clothing ").style.display = "none";
+             document.getElementById("clothing").style.display = "none";
              document.getElementById("toys").style.display = "none";
              document.getElementById("eletronics").style.display = "none";
-             document.getElementById("baby ").style.display = "none";
+             document.getElementById("baby").style.display = "none";
              
              i++
          }
@@ -170,10 +174,10 @@ function insertcategories(categories){
                  document.getElementById("men").style.display = "none";
                  document.getElementById("beauty").style.display = "none";
                  document.getElementById("pet").style.display = "none";
-                 document.getElementById("clothing ").style.display = "none";
+                 document.getElementById("clothing").style.display = "none";
                  document.getElementById("toys").style.display = "none";
                  document.getElementById("eletronics").style.display = "none";
-                 document.getElementById("baby ").style.display = "none";
+                 document.getElementById("baby").style.display = "none";
                  i++
              }
             }
@@ -188,10 +192,10 @@ function insertcategories(categories){
                      document.getElementById("men").style.display = "block";
                      document.getElementById("beauty").style.display = "none";
                      document.getElementById("pet").style.display = "none";
-                     document.getElementById("clothing ").style.display = "none";
+                     document.getElementById("clothing").style.display = "none";
                      document.getElementById("toys").style.display = "none";
                      document.getElementById("eletronics").style.display = "none";
-                     document.getElementById("baby ").style.display = "none";
+                     document.getElementById("baby").style.display = "none";
                      i++
                  }
                 }
@@ -206,10 +210,10 @@ function insertcategories(categories){
                          document.getElementById("men").style.display = "none";
                          document.getElementById("beauty").style.display = "block";
                          document.getElementById("pet").style.display = "none";
-                         document.getElementById("clothing ").style.display = "none";
+                         document.getElementById("clothing").style.display = "none";
                          document.getElementById("toys").style.display = "none";
                          document.getElementById("eletronics").style.display = "none";
-                         document.getElementById("baby ").style.display = "none";
+                         document.getElementById("baby").style.display = "none";
                          i++
                      }
                     }
@@ -225,10 +229,10 @@ function insertcategories(categories){
                          document.getElementById("men").style.display = "none";
                          document.getElementById("beauty").style.display = "none";
                          document.getElementById("pet").style.display = "block";
-                         document.getElementById("clothing ").style.display = "none";
+                         document.getElementById("clothing").style.display = "none";
                          document.getElementById("toys").style.display = "none";
                          document.getElementById("eletronics").style.display = "none";
-                         document.getElementById("baby ").style.display = "none";
+                         document.getElementById("baby").style.display = "none";
                          i++
                      }
                     }
@@ -243,10 +247,10 @@ function insertcategories(categories){
                              document.getElementById("men").style.display = "none";
                              document.getElementById("beauty").style.display = "none";
                              document.getElementById("pet").style.display = "none";
-                             document.getElementById("clothing ").style.display = "block";
+                             document.getElementById("clothing").style.display = "block";
                              document.getElementById("toys").style.display = "none";
                              document.getElementById("eletronics").style.display = "none";
-                             document.getElementById("baby ").style.display = "none";
+                             document.getElementById("baby").style.display = "none";
                              i++
                          }
                         }
@@ -261,17 +265,17 @@ function insertcategories(categories){
                                  document.getElementById("men").style.display = "none";
                                  document.getElementById("beauty").style.display = "none";
                                  document.getElementById("pet").style.display = "none";
-                                 document.getElementById("clothing ").style.display = "none";
+                                 document.getElementById("clothing").style.display = "none";
                                  document.getElementById("toys").style.display = "block";
                                  document.getElementById("eletronics").style.display = "none";
-                                 document.getElementById("baby ").style.display = "none";
+                                 document.getElementById("baby").style.display = "none";
                                  i++
                              }
                             }
-                            if(categories == 'electronics'){
+                            if(categories == 'eletronics'){
                                 var i=0;
                                  while(i< Eletronics.length){
-                                     document.getElementById("eletronics").innerHTML += "<img src=" + Eletronicsref[i] +" height='200px' width='200px'>"+ Eletronics[i] +"<br/>" ;
+                                     document.getElementById("eletronics").innerHTML += "<img src=" + Eletronicsref[i] +" height='200px' width='200px'>"+Eletronics[i] +"<br/>" ;
                                      document.getElementById("boys").style.display = "none";
                                      document.getElementById("girls").style.display = "none";
                                      document.getElementById("teens").style.display = "none";
@@ -279,32 +283,32 @@ function insertcategories(categories){
                                      document.getElementById("men").style.display = "none";
                                      document.getElementById("beauty").style.display = "none";
                                      document.getElementById("pet").style.display = "none";
-                                     document.getElementById("clothing ").style.display = "none";
+                                     document.getElementById("clothing").style.display = "none";
                                      document.getElementById("toys").style.display = "none";
                                      document.getElementById("eletronics").style.display = "block";
-                                     document.getElementById("baby ").style.display = "none";
+                                     document.getElementById("baby").style.display = "none";
                                      i++
                                  }
                                 }
-                                if(categories == 'baby'){
-                                    var i=0;
-                                     while(i< Baby.length){
-                                         document.getElementById("baby").innerHTML += "<img src=" + Babyref[i] +" height='200px' width='200px'>"+ Baby[i] +"<br/>" ;
-                                         document.getElementById("boys").style.display = "none";
-                                         document.getElementById("girls").style.display = "none";
-                                         document.getElementById("teens").style.display = "none";
-                                         document.getElementById("women").style.display = "none";
-                                         document.getElementById("men").style.display = "none";
-                                         document.getElementById("beauty").style.display = "none";
-                                         document.getElementById("pet").style.display = "none";
-                                         document.getElementById("clothing ").style.display = "none";
-                                         document.getElementById("toys").style.display = "none";
-                                         document.getElementById("eletronics").style.display = "none";
-                                         document.getElementById("baby ").style.display = "block";
-                                         i++
-                                     }
-                                    }
-            
+            if(categories == 'baby'){
+                var i=0;
+                    while(i< Baby.length){
+                        document.getElementById("baby").innerHTML += "<img src=" + Babyref[i] +" height='200px' width='200px'>"+ Baby[i] +"<br/>" ;
+                        document.getElementById("boys").style.display = "none";
+                        document.getElementById("girls").style.display = "none";
+                        document.getElementById("teens").style.display = "none";
+                        document.getElementById("women").style.display = "none";
+                        document.getElementById("men").style.display = "none";
+                        document.getElementById("beauty").style.display = "none";
+                        document.getElementById("pet").style.display = "none";
+                        document.getElementById("clothing").style.display = "none";
+                        document.getElementById("toys").style.display = "none";
+                        document.getElementById("eletronics").style.display = "none";
+                        document.getElementById("baby").style.display = "block";
+                        i++
+                    }
+                }
+
         
                         
     
@@ -328,7 +332,6 @@ function ProfileDisplay(){
     z.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
-    logindiv.style.display="none";
 }
 
 function Addprofile(){
@@ -336,7 +339,7 @@ function Addprofile(){
     x.style.display="none";
     z.style.display="none";
     y.style.display="block";
-    logindiv.style.display="none";
+
     Discountpg.style.display="none";
 
 
@@ -349,7 +352,6 @@ function UpdateProfile(){
     x.style.display="none";
     Categories.style.display="none";
     Discountpg.style.display="none";
-    logindiv.style.display="none";
 }
 
 function Giftlist(){
@@ -358,7 +360,6 @@ giftlist.style.display="block";
 y.style.display="none";
 x.style.display="none";
 Discountpg.style.display="none";
-logindiv.style.display="none";
 }
 
 function Discount(){
@@ -367,7 +368,6 @@ function Discount(){
     y.style.display="none";
     x.style.display="none";
     Discountpg.style.display="block";
-    logindiv.style.display="none";
     }
 function Categoriesa(){
 Categories.style.display="block";
@@ -376,7 +376,6 @@ y.style.display="none";
 Discountpg.style.display="none";
 z.style.display="none";
 giftlist.style.display="none"
-logindiv.style.display="none";
 
 }
 
@@ -428,21 +427,6 @@ var Eletronics= ["Smartphone", "Drones", "Xbox","PS4","Cameras","Controllers","L
 var Eletronicsref= ["Amges/smartphone.jpg","Amges/drones.jpg","Amges/xbox.jpeg","Amges/ps4.jpg","Amges/camera.jpeg","Amges/controller.jpeg","Amges/laptop.jpg","Amges/keyboard.jpg","Amges/mouse.jpg","Amges/cpu.jpg","Amges/motherboar.jpg","Amges/powersupply.jpg","Amges/harddrive.jpg","Amges/solidstatedrive.jpg","Amges/monitor.jpg","Amges/ram.jpg","Amges/headphones.jpg","Amges/speaker.jpeg","Amges/accessories.jpg"];
 var Baby = ["Building Blocks", "Rattles", "Stacking Rings","Rubber Ducky","Stuffed Giraffe","Xylophone","Car Seats","Diaper","Bibs","wipes","Baby Onesie"];
 var Babyref = ["Amges/stackingrings.jpeg","Amges/buildingblocks.jpeg","Amges/accessories.jpg","Amges/babyonesie.jpg","Amges/bibs.jpeg","Amges/carseat.jpeg","Amges/diaper.jpeg","Amges/Rattles.jpeg","Amges/rubberducky.jpeg","stuffedGiraffe.jpeg","Amges/wipes.jpeg","Amges/xylophone.jpeg"];
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
