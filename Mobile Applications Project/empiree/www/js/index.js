@@ -8,6 +8,7 @@ let Discountpg=document.getElementById("Discount");
 let logindiv=document.getElementById("logindiv");
 let addGift=document.getElementById("AddGift");
 let nav=document.getElementById("navbar")
+let rev="";
 var db = new PouchDB('empiree_db');
 console.log("the device is not ready")
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -81,6 +82,7 @@ function login(){
        let actualpassword=result.Password;
       let actnam=  document.getElementById("usernametxt").value;
     let password= document.getElementById("passwordtxt").value;
+   rev=result._rev;
     console.log(actnam,actualpassword)
     if(username==actnam){
       
@@ -119,6 +121,16 @@ if(confirmation.value==actualpassword){
     alert('Incorrect password');
 }
 })
+}
+function updateloginprttwo(){
+    let changedpwrd= document.getElementById('newpassword');
+    let changedusername=document.getElementById('newusername');
+    console.log(rev)
+  let  credentials={
+      Username:changedusername,_rev:rev
+    }
+    db.put(credentials);
+    alert('password changed');
 }
 function showgiftlist() {
     db.allDocs({include_docs: true}, 
