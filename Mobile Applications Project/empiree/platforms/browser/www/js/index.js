@@ -4,7 +4,7 @@ let y=document.getElementById('Addprofile');
 let z=document.getElementById('UpdateProfile');
 let giftlist=document.getElementById('Giftlist');
 let Categories=document.getElementById('Categoriesa')
-
+let Discountpg=document.getElementById("Discount");
 
 var db = new PouchDB('empiree_db');
 console.log("the device is not ready")
@@ -100,6 +100,8 @@ function ProfileDisplay(){
     x.style.display="block";
     y.style.display="none";
     z.style.display="none";
+    Categories.style.display="none";
+    Discountpg.style.display="none";
 }
 
 function Addprofile(){
@@ -108,18 +110,18 @@ function Addprofile(){
     z.style.display="none";
     y.style.display="block";
 
-
+    Discountpg.style.display="none";
 
 
 }
 
 function UpdateProfile(){
     giftlist.style.display="none";
-    y.style.display="block";
-    z.style.display="none";
+    y.style.display="none";
+    z.style.display="block";
     x.style.display="none";
-
-
+    Categories.style.display="none";
+    Discountpg.style.display="none";
 }
 
 function Giftlist(){
@@ -127,14 +129,21 @@ z.style.display="none";
 giftlist.style.display="block";
 y.style.display="none";
 x.style.display="none";
-
+Discountpg.style.display="none";
 }
 
+function Discount(){
+    z.style.display="none";
+    giftlist.style.display="none";
+    y.style.display="none";
+    x.style.display="none";
+    Discountpg.style.display="block";
+    }
 function Categoriesa(){
 Categories.style.display="block";
 x.style.display="none";
 y.style.display="none";
-w.style.display="none";
+Discountpg.style.display="none";
 z.style.display="none";
 gift.style.display="none"
 

@@ -1,145 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title>Blank App</title>
-        <link rel="stylesheet"type="text/css" href="css/index.css">
-        <script type="text/javascript" src="js/pouchdb-7.0.0.min.js"></script>
-    </head>
-    <body>
-   <div id="container">
-<div id="responsive_container"> 
-        Welcome
-        <h1> Empiree</h1>
-        <button onclick="Giftlist();"> thanks for the clutch welcome</button>
-        <p> username</p>
-     
-    </div>
-    <div id="navbar">
-            <button id="home" onclick="profileDisplay()">Home</button> 
-            <button id="update" onclick="UpdateProfile()">Update Profile </button> 
-            <button id="giftList" onclick="Giftlist()"> GiftList</button> 
-            <button id="discount" onclick="discount()"> Discount</button> 
-            <button id="Prearranged List" onclick="Categoriesa()"> Prearranged List</button> 
-       
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Blank App</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/pouchdb-7.0.0.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="responsive_container">
+           
+
+        <div id="navbar">
+            <button id="home" onclick="ProfileDisplay()">Home</button>
+            <button id="update" onclick="UpdateProfile()">Update Profile </button>
+            <button id="giftList" onclick="Giftlist()"> GiftList</button>
+            <button id="discount" onclick="Discount()"> Discount</button>
+            <button id="Prearranged List" onclick="Categoriesa()"> Prearranged List</button>
+
         </div>
-        <div id="Categoriesa">  </div>
+        <div id="Categoriesa"> </div>
         <div id="ProfileDisplay">
-            
-    <div id="Addprofile">
-            username:<input id="username"> <br/>
-            password:<input id="password"> <br/>
-            <button onclick="Register();"> create a login </button>
-        </div>
-        <div id="UpdateProfile">
-               u can update if you really want
+                Welcome
+                <h1> Empiree</h1>
+                <button onclick="Giftlist();"> thanks for the clutch welcome</button>
+              
+       <p> username</p>
+    </div>
+            <div id="Addprofile">
+                username:<input id="username"> <br />
+                password:<input id="password"> <br />
+                <button onclick="Register();"> create a login </button>
             </div>
-            <div id="Giftlist"> 
-                choose a gift  <input id="gifttxt"> <br/>
-              gift occasion  <input id="occasiontxt"> <br/>
-              price:<input id="priceamt"> <br/>
-              where are you going to get the item from <input id="locationtxt"> <br/>
-              <button onclick="addgift();"> enter gift</button>
+            <div id="UpdateProfile">
+                u can update if you really want
+            </div>
+            <div id="Giftlist">
+                choose a gift <input id="gifttxt"> <br />
+                gift occasion <input id="occasiontxt"> <br />
+                price:<input id="priceamt"> <br />
+                where are you going to get the item from <input id="locationtxt"> <br />
+                <button onclick="addgift();"> enter gift</button>
             </div>
             <div id="Discount">
-                    Enter Price: 
-                    <br/>
-                    $<input type="text" id="itemPrice" Placeholder="Enter Original Price">
-                     <br>
-                     
-                     Enter Discount:
-                     <br/>
-                     <input type="text" id="discountPercentage" Placeholder="Enter Discount">%
-                     <br/>
-                     <button id="calculate" onclick="calculate();"> Calculate</button>
-                     <br/>
-                     <span id="result"></span>
-                 </div>
+                Enter Price:
+                <br />
+                $<input type="text" id="itemPrice" Placeholder="Enter Original Price">
+                <br>
+
+                Enter Discount:
+                <br />
+                <input type="text" id="discountPercentage" Placeholder="Enter Discount">%
+                <br />
+                <button id="calculate" onclick="calculate();"> Calculate</button>
+                <br />
+                <span id="result"></span>
+            </div>
             <script src="js/index.js"> </script>
-        <!-- <script type="text/javascript" src="cordova.js"></script> -->
-     </div>
+            <!-- <script type="text/javascript" src="cordova.js"></script> -->
         </div>
+    </div>
 
+</body>
 
-
-
-        <script type="text/javascript">
-           /* document.getElementById("").onclick = function(){
-                document.getElementById("selection").style.display = "block";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-
-                document.getElementById("select_service").style.backgroundColor = "#D63E2B";
-                document.getElementById("select_service").style.color = "white";
-                document.getElementById("enter_information").style.backgroundColor = "#ececec";
-                document.getElementById("enter_information").style.color = "#D63E2B";
-        
-                
-            }
-            document.getElementById("update").onclick = function(){
-                document.getElementById("selection").style.display = "block";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-
-
-                document.getElementById("select_service").style.backgroundColor = "#D63E2B";
-                document.getElementById("select_service").style.color = "white";
-                document.getElementById("enter_information").style.backgroundColor = "#ececec";
-                document.getElementById("enter_information").style.color = "#D63E2B";
-        
-                
-            }
-            document.getElementById("giftList").onclick = function(){
-                document.getElementById("selection").style.display = "block";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-
-
-
-                document.getElementById("select_service").style.backgroundColor = "#D63E2B";
-                document.getElementById("select_service").style.color = "white";
-                document.getElementById("enter_information").style.backgroundColor = "#ececec";
-                document.getElementById("enter_information").style.color = "#D63E2B";
-        
-                
-            }
-            document.getElementById("discount").onclick = function(){
-                document.getElementById("selection").style.display = "block";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-
-
-                document.getElementById("select_service").style.backgroundColor = "#D63E2B";
-                document.getElementById("select_service").style.color = "white";
-                document.getElementById("enter_information").style.backgroundColor = "#ececec";
-                document.getElementById("enter_information").style.color = "#D63E2B";
-        
-                
-            }
-            document.getElementById("Prearranged List").onclick = function(){
-                document.getElementById("selection").style.display = "block";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-                document.getElementById("personal_info").style.display = "none";
-
-
-
-                document.getElementById("enter_information").style.backgroundColor = "#D63E2B";
-                document.getElementById("enter_information").style.color = "white";
-                document.getElementById("select_service").style.backgroundColor = "#ececec";
-                document.getElementById("select_service").style.color = "#D63E2B";
-            }*/
-            
-            </script>
-    </body>
 </html>
